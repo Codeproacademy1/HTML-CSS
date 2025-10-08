@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2em;
+  color: #333;
+}
+
+.desc {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.sessions-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.session-btn {
+  background-color: #0078D7;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.session-btn:hover {
+  background-color: #005fa3;
+}
