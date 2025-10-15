@@ -1,0 +1,207 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Book Store Project – Session 2</title> 
+  <style> 
+    body { 
+      background-color: #fff8e7; 
+      font-family: "Comic Sans MS", sans-serif; 
+      color: #333; 
+      padding: 20px; 
+      line-height: 1.6; 
+    } 
+
+    h1, h2, h3 { 
+      color: #0077cc; 
+      text-align: center; 
+    } 
+
+    .box { 
+      background-color: #ffffff; 
+      border-radius: 15px; 
+      padding: 20px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+      margin-bottom: 20px; 
+    } 
+
+    code { 
+      background-color: #f2f2f2; 
+      padding: 2px 6px; 
+      border-radius: 5px; 
+      color: #c7254e; 
+    } 
+
+    pre { 
+      background-color: #f9f9f9; 
+      padding: 10px; 
+      border-radius: 10px; 
+      overflow-x: auto; 
+    } 
+
+    .example-img { 
+      display: flex; 
+      justify-content: center; 
+      gap: 20px; 
+      margin: 20px 0; 
+    } 
+
+    img { 
+      border-radius: 10px; 
+      box-shadow: 0 0 5px rgba(0,0,0,0.2); 
+    } 
+
+    .highlight { 
+      color: #008000; 
+      font-weight: bold; 
+    } 
+
+    footer { 
+      text-align: center; 
+      margin-top: 40px; 
+      font-size: 14px; 
+      color: #777; 
+    } 
+  </style> 
+</head> 
+<body> 
+
+  <h1>🌈 Book Store Project – Session 2</h1> 
+
+  <div class="box"> 
+    <h2>🎯 Purpose</h2> 
+    <p>In this session, students will <b>decorate their Book Store page</b> using more HTML and CSS features.  
+    They’ll learn to add background colors, lists, and links to make their webpage fun and colorful!</p> 
+  </div> 
+
+  <div class="box"> 
+    <h2>🧩 What Students Will Learn</h2> 
+    <ul> 
+      <li>✅ Use of <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> for lists</li> 
+      <li>✅ How to create links using <code>&lt;a&gt;</code></li> 
+      <li>✅ Add background colors and borders with CSS</li> 
+      <li>✅ Use <code>:hover</code> to change link styles</li> 
+    </ul> 
+  </div> 
+
+  <div class="box"> 
+    <h2>💻 Example HTML Code</h2> 
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css" /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1 class="title"&gt;📚 Book Store&lt;/h1&gt;
+    &lt;p class="author"&gt;Author: Kareem Ashraf&lt;/p&gt;
+    &lt;p&gt;He loves writing about ancient Egyptian culture and history.&lt;/p&gt;
+
+    &lt;h2&gt;📖 My Favorite Genres&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;History&lt;/li&gt;
+      &lt;li&gt;Adventure&lt;/li&gt;
+      &lt;li&gt;Science&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Learn more about the author: 
+      &lt;a href="https://en.wikipedia.org/wiki/Egypt" target="_blank"&gt;Click Here&lt;/a&gt;
+    &lt;/p&gt;
+
+    &lt;img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="200"&gt;
+    &lt;img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="150"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre> 
+  </div> 
+
+  <div class="box"> 
+    <h2>🎨 Example CSS Code (styles.css)</h2> 
+    <pre><code>
+body {
+  background-color: #fff8e7;
+  font-family: "Comic Sans MS", sans-serif;
+  text-align: center;
+}
+
+.title {
+  color: #0077cc;
+  border-bottom: 3px solid #0077cc;
+  padding-bottom: 10px;
+}
+
+.author {
+  color: darkred;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: square;
+  color: #008000;
+  text-align: left;
+  display: inline-block;
+}
+
+a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+    </code></pre> 
+  </div> 
+
+  <div class="box"> 
+    <h2>📸 Example Result</h2> 
+    <div class="example-img"> 
+      <img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="180"> 
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="130"> 
+    </div> 
+  </div> 
+
+  <div class="box"> 
+    <h2>🧩 Classroom Activities</h2> 
+    <ul> 
+      <li>🎨 Change the page background color to your favorite one</li> 
+      <li>📚 Add one more book or genre to the list</li> 
+      <li>🌟 Add a border around your images</li> 
+      <li>🖱️ Make your link change color when the mouse moves over it</li> 
+    </ul> 
+  </div> 
+
+  <div class="box"> 
+    <h2>💡 Bonus Challenge</h2> 
+    <p>Try adding this new section to your page:</p> 
+    <pre><code>
+&lt;h3&gt;🌟 Best Seller: The Story of Egypt&lt;/h3&gt;
+&lt;p&gt;Available now for only &lt;span class="price"&gt;150$&lt;/span&gt;!&lt;/p&gt;
+    </code></pre> 
+
+    <p>And style it in CSS like this:</p> 
+    <pre><code>
+.price {
+  color: green;
+  font-weight: bold;
+  font-size: 18px;
+}
+    </code></pre> 
+  </div> 
+
+  <div class="box"> 
+    <h2>🚀 What Students Will Achieve</h2> 
+    <ul> 
+      <li>✅ Create more attractive web pages</li> 
+      <li>✅ Understand how links and lists work</li> 
+      <li>✅ Experiment with CSS styling and colors</li> 
+      <li>✅ Build confidence in HTML & CSS</li> 
+    </ul> 
+  </div> 
+
+  <footer>Created for students learning HTML & CSS 💻 | © 2025 CodePro Academy</footer> 
+
+</body> 
+</html>
