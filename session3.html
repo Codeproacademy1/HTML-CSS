@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 3 - Styling with CSS</title>
+  <style>
+    body {
+      background-color: #e7f3ff;
+      font-family: "Comic Sans MS", sans-serif;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #0077b6;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #023e8a;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px auto;
+      width: 85%;
+    }
+
+    ul {
+      list-style-type: "🎨 ";
+      text-align: left;
+      display: inline-block;
+      font-size: 18px;
+      margin: 15px auto;
+    }
+
+    pre {
+      text-align: left;
+      background: #f8f8f8;
+      border: 2px solid #b0d0f0;
+      padding: 15px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 16px;
+      overflow-x: auto;
+    }
+
+    img {
+      border-radius: 10px;
+      margin: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+    .session-btn {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #0077b6;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+      margin-top: 30px;
+    }
+
+    .session-btn:hover {
+      background-color: #023e8a;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Session 3: Add Colors and Styles with CSS</h1>
+
+  <p>In this session, we’ll learn how to make our Book Store page look <b>beautiful</b> using CSS (Cascading Style Sheets).  
+  CSS lets us change colors, fonts, borders, and even add fun designs!</p>
+
+  <h2>🧠 What You Will Learn</h2>
+  <ul>
+    <li>How to link a CSS file to an HTML page</li>
+    <li>How to color text and backgrounds</li>
+    <li>How to change font sizes and add borders</li>
+    <li>How to make your page more creative</li>
+  </ul>
+
+  <h2>💻 Example Code (styles.css)</h2>
+  <pre>
+/* styles.css */
+
+body {
+  background-color: #fff8e7;
+  font-family: "Comic Sans MS", sans-serif;
+  color: #333;
+}
+
+h1 {
+  color: #d2691e;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+}
+
+img {
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.cost {
+  color: green;
+  font-weight: bold;
+}
+  </pre>
+
+  <h2>🎨 Example Result</h2>
+  <p>This CSS makes your Book Store webpage look neat and colorful! Here’s what it may look like:</p>
+
+  <img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="200">
+  <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="200">
+
+  <h2>🎯 Your Task</h2>
+  <ul>
+    <li>Create a file called <b>styles.css</b>.</li>
+    <li>Write the CSS code shown above.</li>
+    <li>Link it to your HTML page using this line inside &lt;head&gt;:</li>
+  </ul>
+
+  <pre>
+&lt;link rel="stylesheet" href="styles.css"&gt;
+  </pre>
+
+  <ul>
+    <li>Experiment with colors, borders, and font sizes.</li>
+    <li>Make your Book Store page look unique!</li>
+  </ul>
+
+  <a href="index.html" class="session-btn">⬅ Back to Home</a>
+</body>
+</html>
