@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Week 12: Graduation Week!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 3px solid #667eea;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid #764ba2;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e1e5eb;
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f4ff;
+            font-size: 1.8rem;
+        }
+        
+        /* Learning Objectives */
+        .learning-objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Session Styles */
+        .session {
+            margin-top: 20px;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #667eea;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .selector {
+            color: #63b3ed;
+        }
+        
+        .property {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .punctuation {
+            color: #e2e8f0;
+        }
+        
+        /* Practice Exercises */
+        .practice-exercise {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+        
+        /* Website Examples */
+        .website-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .website-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .website-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .website-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Project Template */
+        .project-template {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid #667eea;
+        }
+        
+        .template-preview {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .preview-header {
+            background: royalblue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .preview-nav {
+            background: #4d79ff;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .preview-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .preview-nav a:hover {
+            color: yellow;
+        }
+        
+        .preview-section {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .preview-footer {
+            background: royalblue;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        /* Quiz Section */
+        .quiz {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #fcb69f;
+        }
+        
+        .quiz-question {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        /* Graduation Section */
+        .graduation {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .certificate {
+            background: white;
+            border: 10px solid gold;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: #333;
+        }
+        
+        .certificate h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        /* Homework */
+        .homework {
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: white;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .time-block {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Week 12: My First Complete Website (Graduation Week!)</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#objectives">Learning Objectives</a></li>
+                <li><a href="#session1">Session 1</a></li>
+                <li><a href="#session2">Session 2</a></li>
+                <li><a href="#session3">Session 3</a></li>
+                <li><a href="#project">Final Project</a></li>
+                <li><a href="#graduation">Graduation</a></li>
+            </ul>
+        </nav>
+        
+        <section id="objectives">
+            <h2>🌟 Goal of the Week</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-objectives">
+                <div class="objective-card">
+                    <h3>Combine Everything</h3>
+                    <p>Combine everything they've learned (HTML + CSS).</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Design Complete Website</h3>
+                    <p>Design, style, and animate a simple multi-section website.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Practice Full Process</h3>
+                    <p>Practice planning, designing, coding, and presenting a project.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Earn Certificate</h3>
+                    <p>Earn a Certificate of Completion 🎖️</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session1">
+            <h2>🧩 Session 1: Planning the Final Website</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li>What makes a good website? (Clean layout, colors, readable text, pictures, and fun effects)</li>
+                            <li>Website parts:
+                                <ul>
+                                    <li>Header 🧭 (title + navigation)</li>
+                                    <li>Main section 📄 (content)</li>
+                                    <li>Gallery 🎨 (images)</li>
+                                    <li>Footer 🦶 (contact info or thanks message)</li>
+                                </ul>
+                            </li>
+                            <li>How to plan the layout before coding (simple sketch or drawing)</li>
+                            <li>Choosing a theme:
+                                <ul>
+                                    <li>Option 1: My Favorite Animal 🐶</li>
+                                    <li>Option 2: My Dream Planet 🪐</li>
+                                    <li>Option 3: My Hobby 🎮</li>
+                                    <li>Option 4: My School or Family 👨‍👩‍👧‍👦</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Activity: Website Sketch</h4>
+                            <p>Students draw their layout on paper (Header → Sections → Footer) and label what will go in each part.</p>
+                            <p>Encourage creativity — colors, pictures, and animations.</p>
+                            
+                            <div class="website-examples">
+                                <div class="website-card">
+                                    <div class="website-icon">🐬</div>
+                                    <h3>My Favorite Animal</h3>
+                                    <p>Showcase your favorite animal with facts and images</p>
+                                </div>
+                                <div class="website-card">
+                                    <div class="website-icon">🚀</div>
+                                    <h3>Space Adventure</h3>
+                                    <p>Create a journey through the solar system</p>
+                                </div>
+                                <div class="website-card">
+                                    <div class="website-icon">🎨</div>
+                                    <h3>My Art Gallery</h3>
+                                    <p>Display your drawings and creative work</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session2">
+            <h2>🧩 Session 2: Building the Structure (HTML)</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li>Create a new HTML file for the project</li>
+                            <li>Add main structure:
+                                <ul>
+                                    <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code></li>
+                                </ul>
+                            </li>
+                            <li>Add headings, paragraphs, and images</li>
+                            <li>Create navigation links using anchor tags</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Example Template:</h4>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                                    <span class="tag">&lt;html&gt;</span><br>
+                                    <span class="tag">&lt;head&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">My Favorite Animal</span><span class="tag">&lt;/title&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"style.css"</span><span class="tag">&gt;</span><br>
+                                    <span class="tag">&lt;/head&gt;</span><br>
+                                    <span class="tag">&lt;body&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;header&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">My Favorite Animal: The Dolphin 🐬</span><span class="tag">&lt;/h1&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;nav&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#about"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#gallery"</span><span class="tag">&gt;</span><span class="text">Gallery</span><span class="tag">&lt;/a&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#funfacts"</span><span class="tag">&gt;</span><span class="text">Fun Facts</span><span class="tag">&lt;/a&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#contact"</span><span class="tag">&gt;</span><span class="text">Contact</span><span class="tag">&lt;/a&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/nav&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/header&gt;</span><br><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;main&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section</span> <span class="attribute">id</span>=<span class="value">"about"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">About Dolphins</span><span class="tag">&lt;/h2&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Dolphins are friendly, smart, and love to swim in groups.</span><span class="tag">&lt;/p&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section</span> <span class="attribute">id</span>=<span class="value">"gallery"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">Gallery</span><span class="tag">&lt;/h2&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"dolphin1.jpg"</span> <span class="attribute">width</span>=<span class="value">"200"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"dolphin2.jpg"</span> <span class="attribute">width</span>=<span class="value">"200"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section</span> <span class="attribute">id</span>=<span class="value">"funfacts"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">Fun Facts</span><span class="tag">&lt;/h2&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Dolphins can jump 6 meters out of the water!</span><span class="tag">&lt;/li&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">They talk to each other using sounds and whistles.</span><span class="tag">&lt;/li&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/main&gt;</span><br><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;footer&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Created by [Student's Name] 💙</span><span class="tag">&lt;/p&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/footer&gt;</span><br>
+                                    <span class="tag">&lt;/body&gt;</span><br>
+                                    <span class="tag">&lt;/html&gt;</span>
+                                </code>
+                            </div>
+                            
+                            <div class="template-preview">
+                                <div class="preview-header">
+                                    <h1>My Favorite Animal: The Dolphin 🐬</h1>
+                                </div>
+                                <div class="preview-nav">
+                                    <a href="#about">About</a>
+                                    <a href="#gallery">Gallery</a>
+                                    <a href="#funfacts">Fun Facts</a>
+                                    <a href="#contact">Contact</a>
+                                </div>
+                                <div class="preview-section">
+                                    <h2>About Dolphins</h2>
+                                    <p>Dolphins are friendly, smart, and love to swim in groups.</p>
+                                </div>
+                                <div class="preview-section">
+                                    <h2>Gallery</h2>
+                                    <p>[Dolphin images would appear here]</p>
+                                </div>
+                                <div class="preview-section">
+                                    <h2>Fun Facts</h2>
+                                    <ul>
+                                        <li>Dolphins can jump 6 meters out of the water!</li>
+                                        <li>They talk to each other using sounds and whistles.</li>
+                                    </ul>
+                                </div>
+                                <div class="preview-footer">
+                                    <p>Created by [Student's Name] 💙</p>
+                                </div>
+                            </div>
+                            
+                            <h4>🎮 Challenge:</h4>
+                            <p>Make the navigation links scroll to the correct section smoothly using internal links.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session3">
+            <h2>🧩 Session 3: Styling & Animating (CSS)</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li>Add a CSS file (style.css) and connect it to HTML</li>
+                            <li>Apply:
+                                <ul>
+                                    <li>Colors, fonts, and padding</li>
+                                    <li>Backgrounds (solid, gradient, or image)</li>
+                                    <li>Borders, shadows, and rounded corners</li>
+                                </ul>
+                            </li>
+                            <li>Use hover effects and animations to bring it to life</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Example CSS:</h4>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="selector">body</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">'Comic Sans MS'</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">linear-gradient(to bottom, skyblue, lightyellow)</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin</span><span class="punctuation">:</span> <span class="value">0</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">header</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">royalblue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">sticky</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">top</span><span class="punctuation">:</span> <span class="value">0</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">nav a</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">none</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin</span><span class="punctuation">:</span> <span class="value">0 10px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">transition</span><span class="punctuation">:</span> <span class="value">color 0.3s, transform 0.3s</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">nav a:hover</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">yellow</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">transform</span><span class="punctuation">:</span> <span class="value">scale(1.2)</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">img</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">transition</span><span class="punctuation">:</span> <span class="value">transform 0.5s</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">img:hover</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">transform</span><span class="punctuation">:</span> <span class="value">scale(1.1)</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">footer</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">royalblue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin-top</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">h2</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">darkblue</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">@keyframes glow</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">from</span> <span class="punctuation">{</span> <span class="property">text-shadow</span><span class="punctuation">:</span> <span class="value">0 0 5px white</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;<span class="property">to</span> <span class="punctuation">{</span> <span class="property">text-shadow</span><span class="punctuation">:</span> <span class="value">0 0 20px yellow</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">h1</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">animation</span><span class="punctuation">:</span> <span class="value">glow 2s infinite alternate</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <h4>🎨 Add-On Challenges:</h4>
+                            <ul>
+                                <li>Add a floating button that takes you back to the top (<code>position: fixed;</code>)</li>
+                                <li>Make the images spin or bounce slightly when hovered</li>
+                                <li>Add background music using an <code>&lt;audio&gt;</code> tag</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quiz">
+            <h2>🧠 Mini Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-question">
+                    <h4>Q1: What tag is used for navigation links?</h4>
+                    <p><strong>Answer:</strong> The <code>&lt;nav&gt;</code> tag is used for navigation links.</p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>Q2: What CSS property is used to make an element fixed on the screen?</h4>
+                    <p><strong>Answer:</strong> <code>position: fixed;</code> makes an element stay in the same place on the screen.</p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>Q3: True or False: You can use both transitions and animations on the same element.</h4>
+                    <p><strong>Answer:</strong> True! You can use both transitions and animations together.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>🏆 Final Project: My First Website</h2>
+            <div class="project-template">
+                <h3>💡 Objective:</h3>
+                <p>Students design their own creative multi-section website using everything they learned.</p>
+                
+                <h3>✅ Requirements:</h3>
+                <p>Must include:</p>
+                <ul>
+                    <li>A header with a title</li>
+                    <li>At least 3 sections (about, gallery, fun facts, etc.)</li>
+                    <li>A footer</li>
+                    <li>CSS styling (colors, fonts, hover effects)</li>
+                    <li>At least one animation</li>
+                    <li>Images related to their theme</li>
+                </ul>
+                
+                <h3>💻 Sample Themes:</h3>
+                <div class="website-examples">
+                    <div class="website-card">
+                        <div class="website-icon">🐱</div>
+                        <h3>My Pet Cat</h3>
+                    </div>
+                    <div class="website-card">
+                        <div class="website-icon">🚀</div>
+                        <h3>My Dream Space Adventure</h3>
+                    </div>
+                    <div class="website-card">
+                        <div class="website-icon">🌈</div>
+                        <h3>My Favorite Cartoon</h3>
+                    </div>
+                    <div class="website-card">
+                        <div class="website-icon">✈️</div>
+                        <h3>My Travel Diary</h3>
+                    </div>
+                    <div class="website-card">
+                        <div class="website-icon">👧</div>
+                        <h3>My Best Friend</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="graduation">
+            <h2>🎓 Graduation Presentation Day</h2>
+            <div class="graduation">
+                <h3>Each student:</h3>
+                <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+                    <li>Shows their project on screen</li>
+                    <li>Explains what they built (1–2 minutes)</li>
+                    <li>Shares their favorite HTML or CSS trick</li>
+                    <li>Then they receive their Certificate of Completion and a big round of applause 👏🎉</li>
+                </ul>
+                
+                <div class="certificate">
+                    <h3>Certificate of Completion</h3>
+                    <p>This certifies that</p>
+                    <h2 style="color: #667eea; margin: 15px 0;">[STUDENT NAME]</h2>
+                    <p>has successfully completed the</p>
+                    <h3>HTML & CSS Web Development Course</h3>
+                    <p>demonstrating proficiency in creating beautiful, interactive websites</p>
+                    <div style="margin: 20px 0;">
+                        <p style="font-style: italic;">"From beginner to web developer!"</p>
+                    </div>
+                    <div style="border-top: 2px solid #667eea; padding-top: 15px;">
+                        <p>Date: [GRADUATION DATE]</p>
+                    </div>
+                </div>
+                
+                <h3>🌟 Instructor Tips</h3>
+                <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+                    <li>Encourage creativity more than perfection</li>
+                    <li>Celebrate every student's effort</li>
+                    <li>Take a group photo (optional) for memory and certificates</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="summary">
+            <h2>🏁 End of Course Summary</h2>
+            <div class="homework">
+                <h3>Students can now:</h3>
+                <div class="learning-objectives">
+                    <div class="objective-card">
+                        <h3>✅ Create Structured Pages</h3>
+                        <p>Create structured web pages using HTML</p>
+                    </div>
+                    <div class="objective-card">
+                        <h3>✅ Style Beautifully</h3>
+                        <p>Style beautifully using CSS</p>
+                    </div>
+                    <div class="objective-card">
+                        <h3>✅ Add Motion & Interactivity</h3>
+                        <p>Add motion and interactivity with transitions and animations</p>
+                    </div>
+                    <div class="objective-card">
+                        <h3>✅ Build Full Websites</h3>
+                        <p>Build full websites independently!</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <h2 style="color: #667eea;">Congratulations Graduates! 🎓✨</h2>
+                    <p style="font-size: 1.2rem; margin-top: 15px;">You've completed an amazing journey from beginner to web developer!</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Week 12: Graduation Week!</p>
+            <p>Congratulations on becoming web developers! 🎉🌟</p>
+        </footer>
+    </div>
+</body>
+</html>
