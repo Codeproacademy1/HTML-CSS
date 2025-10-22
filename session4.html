@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Session 4: Semantic HTML & Simple Forms</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #f0f4ff;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f4ff;
+        }
+        
+        /* Learning Goals */
+        .learning-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .goal-card {
+            background-color: #f8faff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        /* Vocabulary */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .vocab-table th, .vocab-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .vocab-table th {
+            background-color: #f0f4ff;
+            color: #667eea;
+        }
+        
+        /* Schedule */
+        .schedule {
+            margin-top: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8faff;
+            border-radius: 8px;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            color: #63b3ed;
+        }
+        
+        .text {
+            color: #f7fafc;
+        }
+        
+        .attribute {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .comment {
+            color: #a0aec0;
+        }
+        
+        /* Project Example */
+        .project-example {
+            background-color: #f8faff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #764ba2;
+        }
+        
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background-color: #f8faff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .success {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Visual Examples */
+        .visual-example {
+            background-color: #f8faff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .example-layout {
+            border: 1px solid #e1e5eb;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .example-header {
+            background-color: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .example-nav {
+            background-color: #f0f4ff;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .example-nav a {
+            margin: 0 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .example-main {
+            padding: 20px;
+            min-height: 200px;
+        }
+        
+        .example-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e1e5eb;
+        }
+        
+        .example-footer {
+            background-color: #2d3748;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        /* Form Example */
+        .form-example {
+            background-color: #f8faff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .form-example label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-example input, .form-example textarea {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e1e5eb;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-example button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .form-example button:hover {
+            background-color: #5a6fd8;
+        }
+        
+        /* Common Mistakes */
+        .mistakes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .mistakes-table th, .mistakes-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .mistakes-table th {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .mistakes-table tr:nth-child(even) {
+            background-color: #fef2f2;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Session 4: Semantic HTML & Simple Forms</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#learning-goals">Learning Goals</a></li>
+                <li><a href="#vocabulary">Key Vocabulary</a></li>
+                <li><a href="#schedule">Class Schedule</a></li>
+                <li><a href="#warmup">Warm-up</a></li>
+                <li><a href="#lesson">Step-by-Step Lesson</a></li>
+                <li><a href="#project">Mini Project</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </nav>
+        
+        <section id="learning-goals">
+            <h2>🎯 Learning Goals</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-goals">
+                <div class="goal-card">
+                    <h3>Understand Semantic Tags</h3>
+                    <p>Understand what semantic tags are and why they're used.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Structure Web Pages</h3>
+                    <p>Be able to structure a web page using &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, and &lt;footer&gt;.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Create Contact Forms</h3>
+                    <p>Learn how to create a simple contact form with input fields and a button.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Build Personal Website</h3>
+                    <p>Build a "Personal Website" with a structured layout and contact section.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vocabulary">
+            <h2>🧠 Key Vocabulary</h2>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Semantic HTML</td>
+                        <td>Tags that describe the meaning or purpose of content</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;header&gt;</td>
+                        <td>The top part of a page (logo, title, menu)</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;nav&gt;</td>
+                        <td>Section that contains navigation links</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;main&gt;</td>
+                        <td>The main content of the page</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;section&gt;</td>
+                        <td>A separate part or topic of a page</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;footer&gt;</td>
+                        <td>Bottom part of a page (copyright, contact info)</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;form&gt;</td>
+                        <td>Used to collect user input</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;input&gt;</td>
+                        <td>A field where users can type something</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;label&gt;</td>
+                        <td>Describes an input field</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;button&gt;</td>
+                        <td>Creates a clickable button</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="schedule">
+            <h2>⏰ Class Timing (75 minutes)</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <div class="time">0–10 min</div>
+                    <div class="activity">Warm-up & recap from Week 3</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10–25 min</div>
+                    <div class="activity">Introduction to Semantic HTML</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">25–45 min</div>
+                    <div class="activity">Create a structured webpage layout</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">45–65 min</div>
+                    <div class="activity">Build a simple contact form</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">65–75 min</div>
+                    <div class="activity">Mini Project + Homework explanation</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="warmup">
+            <h2>💬 Warm-up (10 minutes)</h2>
+            <p>Ask:</p>
+            <ul>
+                <li>"Who remembers what &lt;a&gt; does?"</li>
+                <li>"What's inside your profile page from last week?"</li>
+                <li>"Have you ever filled a form on a website (like a sign-up or feedback form)?"</li>
+            </ul>
+            <p>Show an example of a website layout and point out:</p>
+            <p>"This top part is called a header. The links are in the nav. The main part is the content, and the bottom is the footer."</p>
+        </section>
+        
+        <section id="lesson">
+            <h2>🧩 Step-by-Step Lesson</h2>
+            
+            <div class="visual-example">
+                <h3>🏗️ Part 1: What is Semantic HTML? (15 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Semantic means meaningful. These tags help browsers and developers understand what each part of the page is for."</p>
+                
+                <p>Show this non-semantic vs semantic comparison:</p>
+                
+                <p>❌ Old way:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div&gt;</span><span class="text">My Website</span><span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div&gt;</span><span class="text">Menu</span><span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div&gt;</span><span class="text">Content</span><span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div&gt;</span><span class="text">Footer</span><span class="tag">&lt;/div&gt;</span><br>
+                        <span class="tag">&lt;/div&gt;</span>
+                    </code>
+                </div>
+                
+                <p>✅ Semantic way:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;header&gt;</span><span class="text">My Website</span><span class="tag">&lt;/header&gt;</span><br>
+                        <span class="tag">&lt;nav&gt;</span><span class="text">Menu</span><span class="tag">&lt;/nav&gt;</span><br>
+                        <span class="tag">&lt;main&gt;</span><span class="text">Content</span><span class="tag">&lt;/main&gt;</span><br>
+                        <span class="tag">&lt;footer&gt;</span><span class="text">Footer</span><span class="tag">&lt;/footer&gt;</span>
+                    </code>
+                </div>
+                
+                <p>💬 Explain Simply:</p>
+                <p>"Using &lt;header&gt; instead of &lt;div&gt; tells the browser: 'This is the top of the page.' It's like labeling drawers — easier to find things later!"</p>
+            </div>
+            
+            <div class="visual-example">
+                <h3>🧱 Part 2: Create a Web Page Layout (20 minutes)</h3>
+                <p>Step by step, create the following structure:</p>
+                
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="tag">&lt;html&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">My Personal Website</span><span class="tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">Welcome to My Website</span><span class="tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Created by Kareem</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/header&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;nav&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"index.html"</span><span class="tag">&gt;</span><span class="text">Home</span><span class="tag">&lt;/a&gt;</span> |<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"about.html"</span><span class="tag">&gt;</span><span class="text">About</span><span class="tag">&lt;/a&gt;</span> |<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"contact.html"</span><span class="tag">&gt;</span><span class="text">Contact</span><span class="tag">&lt;/a&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/nav&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;main&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">About Me</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Hi! I'm Kareem. I love coding, drawing, and video games.</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">My Projects</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;article&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h3&gt;</span><span class="text">My Scratch Game</span><span class="tag">&lt;/h3&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">I made a game about jumping cats!</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/article&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/main&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;footer&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">&copy; 2025 Kareem's Website</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/footer&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span><br>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="example-layout">
+                    <div class="example-header">
+                        <h1>Welcome to My Website</h1>
+                        <p>Created by Kareem</p>
+                    </div>
+                    <div class="example-nav">
+                        <a href="#">Home</a> |
+                        <a href="#">About</a> |
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="example-main">
+                        <div class="example-section">
+                            <h2>About Me</h2>
+                            <p>Hi! I'm Kareem. I love coding, drawing, and video games.</p>
+                        </div>
+                        <div class="example-section">
+                            <h2>My Projects</h2>
+                            <article>
+                                <h3>My Scratch Game</h3>
+                                <p>I made a game about jumping cats!</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="example-footer">
+                        <p>&copy; 2025 Kareem's Website</p>
+                    </div>
+                </div>
+                
+                <p>💡 Explain:</p>
+                <ul>
+                    <li>&lt;section&gt; groups similar topics.</li>
+                    <li>&lt;article&gt; is used for one piece of content like a story, post, or project.</li>
+                    <li>&lt;footer&gt; always stays at the bottom.</li>
+                </ul>
+                
+                <p>Show how this structure looks visually:</p>
+                <ul>
+                    <li>Header at the top</li>
+                    <li>Nav below it</li>
+                    <li>Main content in the middle</li>
+                    <li>Footer at the bottom</li>
+                </ul>
+                
+                <p>Encourage students to personalize their text and headings.</p>
+            </div>
+            
+            <div class="visual-example">
+                <h3>💌 Part 3: Creating a Simple Contact Form (20 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Forms let people send information to a website — like signing up, giving feedback, or saying hello."</p>
+                
+                <p>Basic structure:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;form&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Your Name:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Your Email:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"email"</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Your Message:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;textarea</span> <span class="attribute">rows</span>=<span class="value">"4"</span> <span class="attribute">cols</span>=<span class="value">"30"</span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;button&gt;</span><span class="text">Send</span><span class="tag">&lt;/button&gt;</span><br>
+                        <span class="tag">&lt;/form&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="form-example">
+                    <form>
+                        <label>Your Name:</label><br>
+                        <input type="text"><br><br>
+
+                        <label>Your Email:</label><br>
+                        <input type="email"><br><br>
+
+                        <label>Your Message:</label><br>
+                        <textarea rows="4" cols="30"></textarea><br><br>
+
+                        <button>Send</button>
+                    </form>
+                </div>
+                
+                <p>🧠 Explain Each Tag:</p>
+                <ul>
+                    <li>&lt;label&gt; — tells what the input is for.</li>
+                    <li>&lt;input&gt; — where users type.</li>
+                    <li>&lt;textarea&gt; — a bigger box for long text.</li>
+                    <li>&lt;button&gt; — the clickable part!</li>
+                </ul>
+                
+                <p>Show how &lt;br&gt; adds line breaks for spacing.</p>
+                
+                <p>💡 Tip for Kids:</p>
+                <p>"Right now, our form doesn't really send data anywhere — it just looks like a real contact form. Later we'll learn how to make it work!"</p>
+                
+                <h4>🎨 Combine Form with the Layout (10 minutes)</h4>
+                <p>Add the contact form inside the &lt;main&gt; or a new &lt;section&gt;:</p>
+                
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;section&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">Contact Me</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;form&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Name:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Email:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"email"</span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;label&gt;</span><span class="text">Message:</span><span class="tag">&lt;/label&gt;</span><span class="tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;textarea</span> <span class="attribute">rows</span>=<span class="value">"4"</span> <span class="attribute">cols</span>=<span class="value">"30"</span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span><span class="tag">&lt;br&gt;</span><span class="tag">&lt;br&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;button&gt;</span><span class="text">Send Message</span><span class="tag">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/form&gt;</span><br>
+                        <span class="tag">&lt;/section&gt;</span>
+                    </code>
+                </div>
+                
+                <p>Now their page feels real and interactive 🎉</p>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>🧩 Mini Project (10–15 minutes): "My Personal Website"</h2>
+            <p>Goal: Build a simple website with:</p>
+            <ul>
+                <li>A header and navigation</li>
+                <li>A main section about them</li>
+                <li>A project section</li>
+                <li>A contact form</li>
+                <li>A footer with copyright</li>
+            </ul>
+            
+            <p>Encourage creativity:</p>
+            <ul>
+                <li>Add their profile image from Week 3</li>
+                <li>Use different headings and sections</li>
+                <li>Add real or pretend links to their "Projects" or "About Me" page</li>
+            </ul>
+        </section>
+        
+        <section id="show-tell">
+            <h2>🎉 Show & Tell (5 minutes)</h2>
+            <p>Ask:</p>
+            <ul>
+                <li>"Which section did you enjoy creating most?"</li>
+                <li>"Why is using &lt;header&gt; and &lt;footer&gt; better than &lt;div&gt;?"</li>
+                <li>"Can you find your contact form in your code?"</li>
+            </ul>
+            <p>Encourage others to say one nice thing about their classmates' pages 👍</p>
+        </section>
+        
+        <section id="homework">
+            <h2>🏡 Homework</h2>
+            <ul>
+                <li>Add one more &lt;section&gt; to their site (e.g., "My Hobbies" or "My Dreams").</li>
+                <li>Add one new &lt;article&gt; under "Projects" describing another thing they like.</li>
+                <li>Make sure every page includes &lt;header&gt; and &lt;footer&gt;.</li>
+            </ul>
+        </section>
+        
+        <section id="bonus">
+            <h2>🎯 Bonus Challenge (for fast learners)</h2>
+            <p>Add a mailto link in the footer:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"mailto:myemail@example.com"</span><span class="tag">&gt;</span><span class="text">Email Me</span><span class="tag">&lt;/a&gt;</span>
+                </code>
+            </div>
+            
+            <p>Add a "Back to Top" link:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"#top"</span><span class="tag">&gt;</span><span class="text">Back to Top</span><span class="tag">&lt;/a&gt;</span>
+                </code>
+            </div>
+            
+            <p>Add a form placeholder:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"Enter your name"</span><span class="tag">&gt;</span>
+                </code>
+            </div>
+        </section>
+        
+        <section id="assessment">
+            <h2>✅ Assessment & Success Criteria</h2>
+            <div class="assessment-grid">
+                <div class="skill-card">
+                    <h3>Used semantic tags</h3>
+                    <p>&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt; used correctly</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Created a contact form</h3>
+                    <p>Has &lt;form&gt; with input and button</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Organized structure</h3>
+                    <p>Clear page layout</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Personalized content</h3>
+                    <p>Used own info or ideas</p>
+                    <div class="success">🌟 Bonus</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Folder organization</h3>
+                    <p>Files in correct folders</p>
+                    <div class="success">✅</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>⚠️ Common Mistakes</h2>
+            <table class="mistakes-table">
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>What Happens</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Forgot closing tags</td>
+                        <td>Layout breaks</td>
+                        <td>Always close &lt;/header&gt;, &lt;/footer&gt;, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>Missing &lt;form&gt; around inputs</td>
+                        <td>Form doesn't group</td>
+                        <td>Wrap all inputs inside &lt;form&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Wrong nesting</td>
+                        <td>Elements misplaced</td>
+                        <td>Keep proper tag order (header → main → footer)</td>
+                    </tr>
+                    <tr>
+                        <td>Too many &lt;br&gt; tags</td>
+                        <td>Messy layout</td>
+                        <td>Use sections instead</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="teacher-tips">
+            <h2>🧰 Teacher Tips</h2>
+            <ul>
+                <li>Draw a simple diagram on the board showing:
+                    <div style="margin: 10px 0; padding: 10px; background: #f8faff; border-radius: 5px;">
+                        [Header]<br>
+                        [Nav]<br>
+                        [Main Section]<br>
+                        [Contact Form]<br>
+                        [Footer]
+                    </div>
+                </li>
+                <li>Let students copy your base HTML, then personalize it.</li>
+                <li>If time allows, show a quick preview of how CSS will make it colorful next week!</li>
+                <li>Keep using simple, encouraging language — celebrate small wins like "You just built your first website layout!"</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Session 4: Semantic HTML & Simple Forms</p>
+            <p>Create meaningful page structures and interactive forms!</p>
+        </footer>
+    </div>
+</body>
+</html>
