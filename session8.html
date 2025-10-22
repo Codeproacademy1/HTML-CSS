@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Week 8: The Box Model, Margins & Padding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 3px solid #ff6b6b;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ff6b6b;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #ff6b6b;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #fff0f0;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e1e5eb;
+        }
+        
+        section h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fff0f0;
+            font-size: 1.8rem;
+        }
+        
+        /* Learning Objectives */
+        .learning-objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Session Plan */
+        .session-plan {
+            margin-top: 20px;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Box Model Diagram */
+        .box-model-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .box-model {
+            display: inline-block;
+            position: relative;
+            margin: 20px auto;
+        }
+        
+        .margin-box {
+            background: rgba(255, 107, 107, 0.2);
+            padding: 40px;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .border-box {
+            background: rgba(77, 171, 247, 0.2);
+            padding: 30px;
+            border: 3px solid #4dabf7;
+        }
+        
+        .padding-box {
+            background: rgba(82, 196, 26, 0.2);
+            padding: 20px;
+            border: 2px dashed #52c41a;
+        }
+        
+        .content-box {
+            background: rgba(250, 173, 20, 0.2);
+            padding: 30px;
+            border: 2px solid #faad14;
+            font-weight: bold;
+        }
+        
+        .box-label {
+            position: absolute;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .margin-label { top: 10px; left: 10px; color: #ff6b6b; }
+        .border-label { top: 60px; left: 50px; color: #4dabf7; }
+        .padding-label { top: 100px; left: 90px; color: #52c41a; }
+        .content-label { top: 140px; left: 130px; color: #faad14; }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .selector {
+            color: #63b3ed;
+        }
+        
+        .property {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .punctuation {
+            color: #e2e8f0;
+        }
+        
+        /* Practice Exercises */
+        .practice-exercise {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .demo-box {
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            background-color: lightblue;
+            border: 3px solid blue;
+        }
+        
+        .padded-box {
+            background-color: yellow;
+            padding: 50px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid orange;
+        }
+        
+        .margin-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .first-box, .second-box {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .first-box {
+            background-color: pink;
+            margin-bottom: 40px;
+        }
+        
+        .second-box {
+            background-color: lightgreen;
+        }
+        
+        /* Box Sizing Demo */
+        .box-sizing-demo {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .box-example {
+            width: 200px;
+            height: 100px;
+            border: 5px solid black;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .without-box-sizing {
+            background-color: #ffcccc;
+        }
+        
+        .with-box-sizing {
+            background-color: #ccffcc;
+            box-sizing: border-box;
+        }
+        
+        /* Mini Project */
+        .mini-project {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid #ff6b6b;
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            background-color: white;
+            border: 3px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Homework */
+        .homework {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #fcb69f;
+        }
+        
+        /* Materials */
+        .materials {
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: white;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .time-block {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+            
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Week 8: The Box Model, Margins & Padding</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#objectives">Learning Objectives</a></li>
+                <li><a href="#session-plan">Session Plan</a></li>
+                <li><a href="#box-model">Box Model</a></li>
+                <li><a href="#padding">Padding</a></li>
+                <li><a href="#margin">Margin</a></li>
+                <li><a href="#box-sizing">Box Sizing</a></li>
+                <li><a href="#mini-project">Mini Project</a></li>
+                <li><a href="#homework">Homework</a></li>
+            </ul>
+        </nav>
+        
+        <section id="objectives">
+            <h2>🎯 Learning Objectives</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-objectives">
+                <div class="objective-card">
+                    <h3>Understand the Box Model</h3>
+                    <p>Understand that every HTML element is a box (content, padding, border, margin).</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Margin vs Padding</h3>
+                    <p>Learn the difference between margin and padding.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Control Spacing</h3>
+                    <p>Learn how to control element spacing and alignment.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Apply Box Styling</h3>
+                    <p>Apply margins and padding to design clean layouts.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Build Card Grid</h3>
+                    <p>Build a "My Info Card Grid" project using box styling and spacing.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session-plan">
+            <h2>⏰ Total Duration: 2 Hours</h2>
+            <div class="session-plan">
+                <h3>🕐 Hour 1: The Box Model Concept</h3>
+                
+                <div class="time-block">
+                    <div class="time">10 mins</div>
+                    <div class="activity">
+                        <h4>1️⃣ Warm-Up & Recap</h4>
+                        <p>Start with a fun question game:</p>
+                        <ul>
+                            <li>"Who remembers what a border does?"</li>
+                            <li>"How do you make a background gradient?"</li>
+                            <li>"What does border-radius do?"</li>
+                        </ul>
+                        <p>Then introduce today's topic:</p>
+                        <p>"Did you know that every HTML element — a button, a paragraph, an image — is actually a box?"</p>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">20 mins</div>
+                    <div class="activity">
+                        <h4>2️⃣ Explaining the CSS Box Model</h4>
+                        <p>Draw or show this diagram on the board/screen:</p>
+                        
+                        <div class="box-model-diagram">
+                            <div class="box-model">
+                                <div class="margin-box">
+                                    <div class="border-box">
+                                        <div class="padding-box">
+                                            <div class="content-box">
+                                                Content
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-label margin-label">Margin</div>
+                                <div class="box-label border-label">Border</div>
+                                <div class="box-label padding-label">Padding</div>
+                                <div class="box-label content-label">Content</div>
+                            </div>
+                        </div>
+                        
+                        <p>Explain each part:</p>
+                        <ul>
+                            <li><strong>Content:</strong> The text or image inside.</li>
+                            <li><strong>Padding:</strong> Space inside the box (between content and border).</li>
+                            <li><strong>Border:</strong> The edge or frame of the box.</li>
+                            <li><strong>Margin:</strong> Space outside the box (between boxes).</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>🧩 Quick Demo Example:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"box"</span><span class="tag">&gt;</span><span class="text">Hello, I'm a box!</span><span class="tag">&lt;/div&gt;</span><br><br>
+                                    <span class="selector">.box</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">lightblue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">border</span><span class="punctuation">:</span> <span class="value">3px solid blue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin</span><span class="punctuation">:</span> <span class="value">30px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="demo-box">
+                                Hello, I'm a box!
+                            </div>
+                            
+                            <p>Explain what happens if you change padding and margin values (visually show it).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">15 mins</div>
+                    <div class="activity">
+                        <h4>3️⃣ Padding Practice</h4>
+                        <p>Let kids test different padding values.</p>
+                        
+                        <div class="practice-exercise">
+                            <h4>Example:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;p</span> <span class="attribute">class</span>=<span class="value">"padded"</span><span class="tag">&gt;</span><span class="text">This paragraph has padding!</span><span class="tag">&lt;/p&gt;</span><br><br>
+                                    <span class="selector">.padded</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">yellow</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="padded-box">
+                                This paragraph has padding!
+                            </div>
+                            
+                            <p>🎨 Mini Activity:</p>
+                            <p>Ask them to make a "Soft Cloud Box" — a box with padding and a light blue background.</p>
+                            <p>Encourage them to play with different padding values to see the difference.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">15 mins</div>
+                    <div class="activity">
+                        <h4>4️⃣ Margin Practice</h4>
+                        <p>Now explain margins — they create space between boxes.</p>
+                        
+                        <div class="practice-exercise">
+                            <h4>Example:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"first-box"</span><span class="tag">&gt;</span><span class="text">Box 1</span><span class="tag">&lt;/div&gt;</span><br>
+                                    <span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"second-box"</span><span class="tag">&gt;</span><span class="text">Box 2</span><span class="tag">&lt;/div&gt;</span><br><br>
+                                    <span class="selector">.first-box</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">pink</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin-bottom</span><span class="punctuation">:</span> <span class="value">40px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">.second-box</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">lightgreen</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="margin-boxes">
+                                <div class="first-box">Box 1</div>
+                                <div class="second-box">Box 2</div>
+                            </div>
+                            
+                            <p>👦 Mini Challenge:</p>
+                            <p>Ask students to make 3 colorful boxes with different margin spaces — like a traffic light stacked vertically.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>🕑 Hour 2: Box Sizing & Mini Project</h3>
+                
+                <div class="time-block">
+                    <div class="time">15 mins</div>
+                    <div class="activity">
+                        <h4>5️⃣ Box Sizing</h4>
+                        <p>Explain that when you add padding and borders, the box gets bigger.</p>
+                        <p>To fix that, we can use:</p>
+                        
+                        <div class="code-example">
+                            <code>
+                                <span class="property">box-sizing</span><span class="punctuation">:</span> <span class="value">border-box</span><span class="punctuation">;</span>
+                            </code>
+                        </div>
+                        
+                        <p>Tell them: "This makes your box behave better — all parts stay inside the size you set!"</p>
+                        
+                        <div class="practice-exercise">
+                            <h4>Demo:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="selector">.box</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">200px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">border</span><span class="punctuation">:</span> <span class="value">5px solid black</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">box-sizing</span><span class="punctuation">:</span> <span class="value">border-box</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="box-sizing-demo">
+                                <div>
+                                    <h4>Without box-sizing</h4>
+                                    <div class="box-example without-box-sizing">
+                                        Width: 200px + padding + border
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>With box-sizing</h4>
+                                    <div class="box-example with-box-sizing">
+                                        Width: exactly 200px
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">35 mins</div>
+                    <div class="activity">
+                        <h4>6️⃣ 🎯 Mini Project: "My Info Card Grid"</h4>
+                        <p>Each student creates a mini "card layout" showing 3 personal info boxes (like name, hobby, favorite color).</p>
+                        <p>They'll apply margins, padding, and borders neatly.</p>
+                        
+                        <div class="mini-project">
+                            <h4>Example HTML:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"container"</span><span class="tag">&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"card"</span><span class="tag">&gt;</span><span class="text">👩‍💻 My Name: Kareem</span><span class="tag">&lt;/div&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"card"</span><span class="tag">&gt;</span><span class="text">⚽ Hobby: Football</span><span class="tag">&lt;/div&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"card"</span><span class="tag">&gt;</span><span class="text">🎨 Favorite Color: Blue</span><span class="tag">&lt;/div&gt;</span><br>
+                                    <span class="tag">&lt;/div&gt;</span>
+                                </code>
+                            </div>
+                            
+                            <h4>Example CSS:</h4>
+                            <div class="code-example">
+                                <code>
+                                    <span class="selector">body</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#f0f8ff</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">"Comic Sans MS"</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">.container</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">display</span><span class="punctuation">:</span> <span class="value">flex</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">justify-content</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">gap</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">margin-top</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">.card</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">border</span><span class="punctuation">:</span> <span class="value">3px solid #333</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">15px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">150px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">box-shadow</span><span class="punctuation">:</span> <span class="value">3px 3px 8px rgba(0,0,0,0.2)</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="card-container">
+                                <div class="card">👩‍💻 My Name: Kareem</div>
+                                <div class="card">⚽ Hobby: Football</div>
+                                <div class="card">🎨 Favorite Color: Blue</div>
+                            </div>
+                            
+                            <p>Explain how:</p>
+                            <ul>
+                                <li><code>gap</code> adds space between cards.</li>
+                                <li><code>padding</code> adds inner space.</li>
+                                <li><code>margin-top</code> pushes the grid down.</li>
+                                <li><code>box-shadow</code> adds a cool depth effect.</li>
+                            </ul>
+                            
+                            <p>🧩 Optional Add-On:</p>
+                            <p>Let kids add a gradient background or small emoji icon inside each card.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">10 mins</div>
+                    <div class="activity">
+                        <h4>7️⃣ Wrap-Up & Homework</h4>
+                        <p>Review Questions:</p>
+                        <ul>
+                            <li>What is the difference between margin and padding?</li>
+                            <li>What happens when you use <code>box-sizing: border-box</code>?</li>
+                            <li>Why is every element called a box?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="homework">
+            <h2>📚 Homework</h2>
+            <div class="homework">
+                <p>Homework Project:</p>
+                <p>👉 Create a "My Favorite Foods Grid" using 3–4 boxes with:</p>
+                <ul>
+                    <li>Margin and padding</li>
+                    <li>Borders and rounded corners</li>
+                    <li>Background colors for each food</li>
+                </ul>
+                <p><strong>Example Requirements:</strong></p>
+                <ul>
+                    <li>Use different margin values to space out the boxes</li>
+                    <li>Add padding inside each food card</li>
+                    <li>Create rounded corners with border-radius</li>
+                    <li>Use appropriate background colors for each food</li>
+                    <li>Include the food name and a short description</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="materials">
+            <h2>📚 Materials Needed</h2>
+            <div class="materials">
+                <ul>
+                    <li>Laptops / CodePen or VS Code</li>
+                    <li>Internet access</li>
+                    <li>Printed or digital "Box Model Diagram" for kids</li>
+                    <li>Example project reference sheet</li>
+                </ul>
+            </div>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Week 8: The Box Model, Margins & Padding</p>
+            <p>Master the box model to create perfectly spaced layouts! 📦</p>
+        </footer>
+    </div>
+</body>
+</html>
