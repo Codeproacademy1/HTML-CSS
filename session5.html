@@ -1,299 +1,851 @@
-🗓️ Week 5: Introduction to CSS — Making Websites Look Awesome 🎨
-🎯 Learning Goals
-
-By the end of this week, students will:
-
-Understand what CSS is and why we use it.
-
-Know the basic structure of a CSS rule: selector { property: value; }.
-
-Be able to change text color, background color, and font size.
-
-Add CSS to their existing HTML files (using <style> or an external .css file).
-
-Create a colorful, styled version of their “Personal Website.”
-
-🧠 Key Vocabulary
-Term	Meaning
-CSS	Cascading Style Sheets – used to style web pages
-Selector	The part that chooses what to style
-Property	What you want to change (like color, font-size)
-Value	The new setting (like red, 20px)
-Inline CSS	Style written inside a tag
-Internal CSS	Style written inside <style> in <head>
-External CSS	Style written in a separate .css file
-Color	The visual appearance of text or background
-⏰ Class Timing (75 minutes)
-Time	Activity
-0–10 min	Review and warm-up
-10–25 min	What is CSS & how it works
-25–45 min	Internal CSS and basic text styles
-45–65 min	Background colors, borders, and fun styling
-65–75 min	Mini project + Homework explanation
-💬 Warm-up (10 minutes)
-
-Ask:
-
-“Who remembers how our website looked last week?”
-
-“Do you think we can make it colorful and cool?”
-
-“What colors do you want for your page?”
-
-Show an example before and after adding CSS:
-🖥️ Plain HTML page → 🎨 Styled CSS page
-
-Kids will instantly get excited to start styling!
-
-🧩 Step-by-Step Lesson
-🎨 Part 1: What is CSS? (15 minutes)
-
-Explain:
-
-“HTML builds the structure — like the walls of a house.
-CSS is the paint, decorations, and style!”
-
-Show the structure of a CSS rule:
-
-selector {
-  property: value;
-}
-
-
-Example:
-
-h1 {
-  color: blue;
-}
-
-
-💡 Explain:
-
-h1 → tells the browser what to style (selector).
-
-color → what you want to change (property).
-
-blue → how you want to change it (value).
-
-🎨 Part 2: Internal CSS (20 minutes)
-
-Show how to add a <style> section inside the <head>:
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Personal Website</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Session 5: Introduction to CSS</title>
     <style>
-      body {
-        background-color: lightyellow;
-      }
-
-      h1 {
-        color: darkblue;
-        font-family: Arial;
-      }
-
-      p {
-        color: darkgreen;
-        font-size: 18px;
-      }
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #FF6A88;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #fff0f3;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            color: #FF6A88;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fff0f3;
+        }
+        
+        /* Learning Goals */
+        .learning-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .goal-card {
+            background-color: #fff5f7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #FF6A88;
+        }
+        
+        /* Vocabulary */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .vocab-table th, .vocab-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .vocab-table th {
+            background-color: #fff0f3;
+            color: #FF6A88;
+        }
+        
+        /* Schedule */
+        .schedule {
+            margin-top: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fff5f7;
+            border-radius: 8px;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #FF6A88;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .selector {
+            color: #63b3ed;
+        }
+        
+        .property {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .punctuation {
+            color: #e2e8f0;
+        }
+        
+        .comment {
+            color: #a0aec0;
+        }
+        
+        /* CSS Examples */
+        .css-demo {
+            background-color: #fff5f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF9A8B;
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .demo-code {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .demo-preview {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e5eb;
+        }
+        
+        .styled-h1 {
+            color: darkblue;
+            font-family: Arial, sans-serif;
+        }
+        
+        .styled-p {
+            color: darkgreen;
+            font-size: 18px;
+        }
+        
+        .styled-section {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border: 2px solid #ccc;
+            margin: 10px 0;
+        }
+        
+        .styled-list {
+            color: purple;
+        }
+        
+        .styled-link {
+            color: red;
+            text-decoration: none;
+        }
+        
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background-color: #fff5f7;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .success {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Before/After Example */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .before, .after {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .before {
+            background-color: #f8f9fa;
+            border: 2px dashed #ccc;
+        }
+        
+        .after {
+            background-color: #fff5f7;
+            border: 2px solid #FF6A88;
+        }
+        
+        .before h3, .after h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* Common Mistakes */
+        .mistakes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .mistakes-table th, .mistakes-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .mistakes-table th {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .mistakes-table tr:nth-child(even) {
+            background-color: #fef2f2;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+            
+            .demo-container, .before-after {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <h1>Welcome to My Website</h1>
-    <p>Hi! I'm Kareem. I love coding and learning new things!</p>
-  </body>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Session 5: Introduction to CSS — Making Websites Look Awesome 🎨</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#learning-goals">Learning Goals</a></li>
+                <li><a href="#vocabulary">Key Vocabulary</a></li>
+                <li><a href="#schedule">Class Schedule</a></li>
+                <li><a href="#warmup">Warm-up</a></li>
+                <li><a href="#lesson">Step-by-Step Lesson</a></li>
+                <li><a href="#project">Mini Project</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </nav>
+        
+        <section id="learning-goals">
+            <h2>🎯 Learning Goals</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-goals">
+                <div class="goal-card">
+                    <h3>Understand CSS</h3>
+                    <p>Understand what CSS is and why we use it.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>CSS Rule Structure</h3>
+                    <p>Know the basic structure of a CSS rule: selector { property: value; }.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Style Text & Backgrounds</h3>
+                    <p>Be able to change text color, background color, and font size.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Add CSS to HTML</h3>
+                    <p>Add CSS to their existing HTML files (using &lt;style&gt; or an external .css file).</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Create Styled Website</h3>
+                    <p>Create a colorful, styled version of their "Personal Website."</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vocabulary">
+            <h2>🧠 Key Vocabulary</h2>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CSS</td>
+                        <td>Cascading Style Sheets – used to style web pages</td>
+                    </tr>
+                    <tr>
+                        <td>Selector</td>
+                        <td>The part that chooses what to style</td>
+                    </tr>
+                    <tr>
+                        <td>Property</td>
+                        <td>What you want to change (like color, font-size)</td>
+                    </tr>
+                    <tr>
+                        <td>Value</td>
+                        <td>The new setting (like red, 20px)</td>
+                    </tr>
+                    <tr>
+                        <td>Inline CSS</td>
+                        <td>Style written inside a tag</td>
+                    </tr>
+                    <tr>
+                        <td>Internal CSS</td>
+                        <td>Style written inside &lt;style&gt; in &lt;head&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>External CSS</td>
+                        <td>Style written in a separate .css file</td>
+                    </tr>
+                    <tr>
+                        <td>Color</td>
+                        <td>The visual appearance of text or background</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="schedule">
+            <h2>⏰ Class Timing (75 minutes)</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <div class="time">0–10 min</div>
+                    <div class="activity">Review and warm-up</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10–25 min</div>
+                    <div class="activity">What is CSS & how it works</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">25–45 min</div>
+                    <div class="activity">Internal CSS and basic text styles</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">45–65 min</div>
+                    <div class="activity">Background colors, borders, and fun styling</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">65–75 min</div>
+                    <div class="activity">Mini project + Homework explanation</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="warmup">
+            <h2>💬 Warm-up (10 minutes)</h2>
+            <p>Ask:</p>
+            <ul>
+                <li>"Who remembers how our website looked last week?"</li>
+                <li>"Do you think we can make it colorful and cool?"</li>
+                <li>"What colors do you want for your page?"</li>
+            </ul>
+            
+            <div class="before-after">
+                <div class="before">
+                    <h3>🖥️ Plain HTML Page</h3>
+                    <div style="background: white; padding: 15px; border: 1px solid #ccc; margin: 10px 0;">
+                        <h1 style="font-family: serif; color: black;">Welcome to My Website</h1>
+                        <p style="font-family: serif; color: black;">Hi! I'm Kareem. I love coding and learning new things!</p>
+                    </div>
+                    <p>Basic structure, no styling</p>
+                </div>
+                <div class="after">
+                    <h3>🎨 Styled CSS Page</h3>
+                    <div style="background: lightyellow; padding: 15px; border: 2px solid #FF6A88; margin: 10px 0;">
+                        <h1 style="font-family: Arial; color: darkblue;">Welcome to My Website</h1>
+                        <p style="font-family: Arial; color: darkgreen; font-size: 18px;">Hi! I'm Kareem. I love coding and learning new things!</p>
+                    </div>
+                    <p>Colorful and styled with CSS!</p>
+                </div>
+            </div>
+            
+            <p>Kids will instantly get excited to start styling!</p>
+        </section>
+        
+        <section id="lesson">
+            <h2>🧩 Step-by-Step Lesson</h2>
+            
+            <div class="css-demo">
+                <h3>🎨 Part 1: What is CSS? (15 minutes)</h3>
+                <p>Explain:</p>
+                <p>"HTML builds the structure — like the walls of a house. CSS is the paint, decorations, and style!"</p>
+                
+                <p>Show the structure of a CSS rule:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="selector">selector</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">property</span><span class="punctuation">:</span> <span class="value">value</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span>
+                    </code>
+                </div>
+                
+                <p>Example:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="selector">h1</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span>
+                    </code>
+                </div>
+                
+                <p>💡 Explain:</p>
+                <ul>
+                    <li><strong>h1</strong> → tells the browser what to style (selector).</li>
+                    <li><strong>color</strong> → what you want to change (property).</li>
+                    <li><strong>blue</strong> → how you want to change it (value).</li>
+                </ul>
+            </div>
+            
+            <div class="css-demo">
+                <h3>🎨 Part 2: Internal CSS (20 minutes)</h3>
+                <p>Show how to add a &lt;style&gt; section inside the &lt;head&gt;:</p>
+                
+                <div class="demo-container">
+                    <div class="demo-code">
+                        <code>
+                            <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                            <span class="tag">&lt;html&gt;</span><br>
+                            &nbsp;&nbsp;<span class="tag">&lt;head&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">My Personal Website</span><span class="tag">&lt;/title&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;style&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">body</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">lightyellow</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">h1</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">darkblue</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">Arial</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">p</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">darkgreen</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">font-size</span><span class="punctuation">:</span> <span class="value">18px</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span><br>
+                            &nbsp;&nbsp;<span class="tag">&lt;/head&gt;</span><br>
+                            &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">Welcome to My Website</span><span class="tag">&lt;/h1&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Hi! I'm Kareem. I love coding and learning new things!</span><span class="tag">&lt;/p&gt;</span><br>
+                            &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span><br>
+                            <span class="tag">&lt;/html&gt;</span>
+                        </code>
+                    </div>
+                    <div class="demo-preview">
+                        <div style="background-color: lightyellow; padding: 20px; border-radius: 5px;">
+                            <h1 class="styled-h1">Welcome to My Website</h1>
+                            <p class="styled-p">Hi! I'm Kareem. I love coding and learning new things!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>💬 Discuss:</p>
+                <ul>
+                    <li><strong>background-color</strong> changes the whole page color.</li>
+                    <li><strong>color</strong> changes text color.</li>
+                    <li><strong>font-family</strong> changes the font.</li>
+                    <li><strong>font-size</strong> changes how big the text is.</li>
+                </ul>
+                
+                <p>🧠 Fun Exercise:</p>
+                <p>"Change the background to your favorite color and make the text readable."</p>
+                <p>Encourage creativity but remind them:</p>
+                <p>"Bright text on bright backgrounds is hard to read!"</p>
+            </div>
+            
+            <div class="css-demo">
+                <h3>🌈 Part 3: Styling Multiple Elements (15 minutes)</h3>
+                <p>Show how they can style lists, links, and sections:</p>
+                
+                <div class="demo-container">
+                    <div class="demo-code">
+                        <code>
+                            <span class="selector">ul</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">purple</span><span class="punctuation">;</span><br>
+                            <span class="punctuation">}</span><br><br>
+                            <span class="selector">a</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">red</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;<span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">none</span><span class="punctuation">;</span><br>
+                            <span class="punctuation">}</span><br><br>
+                            <span class="selector">section</span> <span class="punctuation">{</span><br>
+                            &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#f0f8ff</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                            &nbsp;&nbsp;<span class="property">border</span><span class="punctuation">:</span> <span class="value">2px solid #ccc</span><span class="punctuation">;</span><br>
+                            <span class="punctuation">}</span>
+                        </code>
+                    </div>
+                    <div class="demo-preview">
+                        <div class="styled-section">
+                            <h3>My Favorite Things</h3>
+                            <ul class="styled-list">
+                                <li>Pizza</li>
+                                <li>Video Games</li>
+                                <li>Coding</li>
+                            </ul>
+                            <p>Visit my <a href="#" class="styled-link">favorite website</a>!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>💡 Explain:</p>
+                <ul>
+                    <li><strong>padding</strong> adds space inside an element.</li>
+                    <li><strong>border</strong> adds a line around an element.</li>
+                    <li><strong>#f0f8ff</strong> is a hex color code (advanced concept — just introduce it lightly).</li>
+                </ul>
+                
+                <p>🧠 Mini Activity:</p>
+                <p>"Add borders to your sections and make each section have a different background color!"</p>
+            </div>
+            
+            <div class="css-demo">
+                <h3>🧱 Part 4: Inline vs Internal vs External CSS (10 minutes)</h3>
+                <p>Show the three ways to use CSS:</p>
+                
+                <p><strong>Inline CSS</strong> (inside a tag)</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h1</span> <span class="attribute">style</span>=<span class="value">"color:red;"</span><span class="tag">&gt;</span><span class="text">Hello</span><span class="tag">&lt;/h1&gt;</span>
+                    </code>
+                </div>
+                <p>➤ Use only for quick changes.</p>
+                
+                <p><strong>Internal CSS</strong> (inside &lt;style&gt;)</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;style&gt;</span> <span class="selector">p</span> <span class="punctuation">{</span> <span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="punctuation">;</span> <span class="punctuation">}</span> <span class="tag">&lt;/style&gt;</span>
+                    </code>
+                </div>
+                <p>➤ Best for small projects.</p>
+                
+                <p><strong>External CSS</strong> (in another file)</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"style.css"</span><span class="tag">&gt;</span>
+                    </code>
+                </div>
+                <p>➤ Best for big projects (will be used later in Week 6).</p>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>💪 Part 5: Mini Project — "My Styled Website" (15 minutes)</h2>
+            <p>Goal: Add CSS to their "Personal Website" from Week 4.</p>
+            
+            <p>✅ Requirements:</p>
+            <ul>
+                <li>Change the background color of the page.</li>
+                <li>Make the main heading (h1) a fun color.</li>
+                <li>Style paragraphs with a readable font.</li>
+                <li>Give each section a border and some padding.</li>
+                <li>Change link colors in the &lt;nav&gt; bar.</li>
+            </ul>
+            
+            <div class="project-example">
+                <h3>Example CSS:</h3>
+                <div class="code-example">
+                    <code>
+                        <span class="selector">body</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#fef9e7</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">"Comic Sans MS"</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span><br><br>
+                        <span class="selector">header</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#aed6f1</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span><br><br>
+                        <span class="selector">nav a</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">darkblue</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">none</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">margin-right</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span><br><br>
+                        <span class="selector">footer</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#d5f5e3</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">5px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                        <span class="punctuation">}</span>
+                    </code>
+                </div>
+                
+                <p>Encourage kids to test colors using color names (red, green, lightblue) or hex codes (optional).</p>
+            </div>
+        </section>
+        
+        <section id="show-tell">
+            <h2>🎉 Show & Tell (5 minutes)</h2>
+            <p>Have a "Website Parade" where 3–4 students show:</p>
+            <ul>
+                <li>Their chosen color combinations.</li>
+                <li>Cool fonts or section styles.</li>
+            </ul>
+            <p>Ask:</p>
+            <ul>
+                <li>"What colors did you pick and why?"</li>
+                <li>"Who made their website easy to read?"</li>
+            </ul>
+            <p>Reward creativity with fun badges like 🌈 "Color Master" or 🎨 "Design Star".</p>
+        </section>
+        
+        <section id="homework">
+            <h2>🏡 Homework</h2>
+            <ul>
+                <li>Add at least 3 new CSS rules (e.g., style lists, links, or headers).</li>
+                <li>Try two different background colors and pick their favorite one.</li>
+                <li>Save the project as my_styled_website.html.</li>
+            </ul>
+        </section>
+        
+        <section id="bonus">
+            <h2>🎯 Bonus Challenge (for fast learners)</h2>
+            <p>Add a hover effect for links:</p>
+            <div class="code-example">
+                <code>
+                    <span class="selector">a:hover</span> <span class="punctuation">{</span><br>
+                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">orange</span><span class="punctuation">;</span><br>
+                    <span class="punctuation">}</span>
+                </code>
+            </div>
+            
+            <p>Make the footer text smaller:</p>
+            <div class="code-example">
+                <code>
+                    <span class="selector">footer</span> <span class="punctuation">{</span><br>
+                    &nbsp;&nbsp;<span class="property">font-size</span><span class="punctuation">:</span> <span class="value">14px</span><span class="punctuation">;</span><br>
+                    <span class="punctuation">}</span>
+                </code>
+            </div>
+            
+            <p>Use a Google Font (introduce briefly):</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;link</span> <span class="attribute">href</span>=<span class="value">"https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span><span class="tag">&gt;</span><br>
+                    <span class="tag">&lt;style&gt;</span><br>
+                    &nbsp;&nbsp;<span class="selector">body</span> <span class="punctuation">{</span> <span class="property">font-family</span><span class="punctuation">:</span> <span class="value">'Comic Neue', cursive</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                    <span class="tag">&lt;/style&gt;</span>
+                </code>
+            </div>
+        </section>
+        
+        <section id="assessment">
+            <h2>✅ Assessment & Success Criteria</h2>
+            <div class="assessment-grid">
+                <div class="skill-card">
+                    <h3>Added CSS correctly</h3>
+                    <p>&lt;style&gt; inside &lt;head&gt;</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Changed text colors</h3>
+                    <p>Used color: property</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Changed background</h3>
+                    <p>Used background-color:</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Styled multiple elements</h3>
+                    <p>Headers, paragraphs, lists</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Creativity</h3>
+                    <p>Fun colors and readable design</p>
+                    <div class="success">🌟 Bonus</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>⚠️ Common Mistakes</h2>
+            <table class="mistakes-table">
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>What Happens</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Missing curly braces {}</td>
+                        <td>CSS stops working</td>
+                        <td>Always use { property: value; }</td>
+                    </tr>
+                    <tr>
+                        <td>Forgetting ; at end of line</td>
+                        <td>Only first rule works</td>
+                        <td>Add semicolons after each rule</td>
+                    </tr>
+                    <tr>
+                        <td>Writing CSS inside &lt;body&gt;</td>
+                        <td>Doesn't apply</td>
+                        <td>Write it inside &lt;head&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Dark text on dark background</td>
+                        <td>Hard to read</td>
+                        <td>Choose high contrast colors</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="teacher-tips">
+            <h2>🧰 Teacher Tips</h2>
+            <ul>
+                <li>Bring color charts or let students explore <a href="https://colorpicker.me" target="_blank">colorpicker.me</a> (if online).</li>
+                <li>Let students experiment — don't restrict their color choices unless text is unreadable.</li>
+                <li>Encourage sharing ideas like "Who found the nicest background?"</li>
+                <li>If a student's CSS breaks, help debug by checking for {}, ;, or where &lt;style&gt; is placed.</li>
+                <li>Preview next week: "Next time, we'll learn how to make our websites look organized — with boxes, alignment, and spacing!"</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Session 5: Introduction to CSS</p>
+            <p>Make your websites colorful and awesome with CSS styling! 🎨</p>
+        </footer>
+    </div>
+</body>
 </html>
-
-
-💬 Discuss:
-
-background-color changes the whole page color.
-
-color changes text color.
-
-font-family changes the font.
-
-font-size changes how big the text is.
-
-🧠 Fun Exercise:
-
-“Change the background to your favorite color and make the text readable.”
-
-Encourage creativity but remind them:
-
-“Bright text on bright backgrounds is hard to read!”
-
-🌈 Part 3: Styling Multiple Elements (15 minutes)
-
-Show how they can style lists, links, and sections:
-
-ul {
-  color: purple;
-}
-
-a {
-  color: red;
-  text-decoration: none;
-}
-
-section {
-  background-color: #f0f8ff;
-  padding: 10px;
-  border: 2px solid #ccc;
-}
-
-
-💡 Explain:
-
-padding adds space inside an element.
-
-border adds a line around an element.
-
-#f0f8ff is a hex color code (advanced concept — just introduce it lightly).
-
-🧠 Mini Activity:
-
-“Add borders to your sections and make each section have a different background color!”
-
-🧱 Part 4: Inline vs Internal vs External CSS (10 minutes)
-
-Show the three ways to use CSS:
-
-Inline CSS (inside a tag)
-
-<h1 style="color:red;">Hello</h1>
-
-
-➤ Use only for quick changes.
-
-Internal CSS (inside <style>)
-
-<style> p { color: blue; } </style>
-
-
-➤ Best for small projects.
-
-External CSS (in another file)
-
-<link rel="stylesheet" href="style.css">
-
-
-➤ Best for big projects (will be used later in Week 6).
-
-💪 Part 5: Mini Project — “My Styled Website” (15 minutes)
-
-Goal: Add CSS to their “Personal Website” from Week 4.
-
-✅ Requirements:
-
-Change the background color of the page.
-
-Make the main heading (h1) a fun color.
-
-Style paragraphs with a readable font.
-
-Give each section a border and some padding.
-
-Change link colors in the <nav> bar.
-
-Example:
-
-body {
-  background-color: #fef9e7;
-  font-family: "Comic Sans MS";
-}
-
-header {
-  background-color: #aed6f1;
-  padding: 10px;
-}
-
-nav a {
-  color: darkblue;
-  font-weight: bold;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-footer {
-  background-color: #d5f5e3;
-  padding: 5px;
-  text-align: center;
-}
-
-
-Encourage kids to test colors using color names (red, green, lightblue) or hex codes (optional).
-
-🎉 Show & Tell (5 minutes)
-
-Have a “Website Parade” where 3–4 students show:
-
-Their chosen color combinations.
-
-Cool fonts or section styles.
-
-Ask:
-
-“What colors did you pick and why?”
-
-“Who made their website easy to read?”
-
-Reward creativity with fun badges like 🌈 “Color Master” or 🎨 “Design Star”.
-
-🏡 Homework
-
-Add at least 3 new CSS rules (e.g., style lists, links, or headers).
-
-Try two different background colors and pick their favorite one.
-
-Save the project as my_styled_website.html.
-
-✅ Assessment & Success Criteria
-Skill	What to Check	Success
-Added CSS correctly	<style> inside <head>	✅
-Changed text colors	Used color: property	✅
-Changed background	Used background-color:	✅
-Styled multiple elements	Headers, paragraphs, lists	✅
-Creativity	Fun colors and readable design	🌟 Bonus
-⚠️ Common Mistakes
-Mistake	What Happens	Fix
-Missing curly braces {}	CSS stops working	Always use { property: value; }
-Forgetting ; at end of line	Only first rule works	Add semicolons after each rule
-Writing CSS inside <body>	Doesn’t apply	Write it inside <head>
-Dark text on dark background	Hard to read	Choose high contrast colors
-🎯 Bonus Challenge (for fast learners)
-
-Add a hover effect for links:
-
-a:hover {
-  color: orange;
-}
-
-
-Make the footer text smaller:
-
-footer {
-  font-size: 14px;
-}
-
-
-Use a Google Font (introduce briefly):
-
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
-<style>
-  body { font-family: 'Comic Neue', cursive; }
-</style>
-
-🧰 Teacher Tips
-
-Bring color charts or let students explore colorpicker.me
- (if online).
-
-Let students experiment — don’t restrict their color choices unless text is unreadable.
-
-Encourage sharing ideas like “Who found the nicest background?”
-
-If a student’s CSS breaks, help debug by checking for {}, ;, or where <style> is placed.
-
-Preview next week: “Next time, we’ll learn how to make our websites look organized — with boxes, alignment, and spacing!”
