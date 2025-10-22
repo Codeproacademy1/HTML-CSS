@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Week 6: Styling Text and Colors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: 'Pacifico', cursive;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #f0f5ff;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            color: #2575fc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f5ff;
+        }
+        
+        /* Learning Objectives */
+        .learning-objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .objective-card {
+            background-color: #f8fbff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        /* Session Plan */
+        .session-plan {
+            margin-top: 20px;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8fbff;
+            border-radius: 8px;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #6a11cb;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Text Properties Table */
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .properties-table th, .properties-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .properties-table th {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .selector {
+            color: #63b3ed;
+        }
+        
+        .property {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .punctuation {
+            color: #e2e8f0;
+        }
+        
+        /* Practice Exercise */
+        .practice-exercise {
+            background-color: #f8fbff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2575fc;
+        }
+        
+        .styled-name {
+            color: darkblue;
+            font-size: 40px;
+            font-family: "Comic Sans MS", cursive;
+            text-align: center;
+            text-decoration: underline;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+        }
+        
+        /* Color Examples */
+        .color-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .color-card {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .color-name {
+            background-color: red;
+        }
+        
+        .color-hex {
+            background-color: #ff0000;
+        }
+        
+        .color-rgb {
+            background-color: rgb(255, 0, 0);
+        }
+        
+        .color-green {
+            background-color: #00ff00;
+        }
+        
+        .color-blue {
+            background-color: #0000ff;
+        }
+        
+        .color-purple {
+            background-color: #800080;
+        }
+        
+        /* Google Fonts Example */
+        .google-fonts-demo {
+            background-color: #f8fbff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .font-example {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .pacifico-font {
+            font-family: 'Pacifico', cursive;
+            font-size: 28px;
+            color: #6a11cb;
+        }
+        
+        .comic-neue-font {
+            font-family: 'Comic Neue', cursive;
+            font-size: 24px;
+            color: #2575fc;
+        }
+        
+        /* Mini Project */
+        .mini-project {
+            background-color: #f8fbff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .quote-example {
+            background-color: lavender;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .quote-text {
+            color: #3333cc;
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .quote-author {
+            color: #555;
+            font-style: italic;
+            font-size: 20px;
+        }
+        
+        /* Homework */
+        .homework {
+            background-color: #fff9e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .time-block {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+            
+            .styled-name {
+                font-size: 28px;
+            }
+            
+            .quote-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Week 6: Styling Text and Colors with CSS</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#objectives">Learning Objectives</a></li>
+                <li><a href="#session-plan">Session Plan</a></li>
+                <li><a href="#text-properties">Text Properties</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#google-fonts">Google Fonts</a></li>
+                <li><a href="#mini-project">Mini Project</a></li>
+                <li><a href="#homework">Homework</a></li>
+            </ul>
+        </nav>
+        
+        <section id="objectives">
+            <h2>🎯 Learning Objectives</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-objectives">
+                <div class="objective-card">
+                    <h3>Style Text with CSS</h3>
+                    <p>Understand how to style text using CSS properties (font size, color, family, weight).</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Use Google Fonts</h3>
+                    <p>Learn how to use Google Fonts to enhance typography.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Text Alignment & Decoration</h3>
+                    <p>Explore how to change text alignment and decoration.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Understand Color Values</h3>
+                    <p>Learn about color values (name, HEX, RGB).</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Apply Colors</h3>
+                    <p>Apply colors to text and backgrounds effectively.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Create Quote Project</h3>
+                    <p>Create a colorful "My Favorite Quote" mini-project.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session-plan">
+            <h2>🗓️ Session Plan (2 hours total)</h2>
+            <div class="session-plan">
+                <h3>🕐 Hour 1: CSS Text Styling Basics</h3>
+                
+                <div class="time-block">
+                    <div class="time">10 mins</div>
+                    <div class="activity">
+                        <h4>1. Review</h4>
+                        <p>Quick recap from Week 5:</p>
+                        <ul>
+                            <li>What is a CSS selector and property?</li>
+                            <li>How do we link CSS to HTML?</li>
+                            <li>What does <code>color:</code> and <code>background-color:</code> do?</li>
+                        </ul>
+                        <p>Use fun examples like changing background colors of animals:</p>
+                        <div class="code-example">
+                            <code>
+                                <span class="selector">body</span> <span class="punctuation">{</span><br>
+                                &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">lightblue</span><span class="punctuation">;</span><br>
+                                <span class="punctuation">}</span>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">40 mins</div>
+                    <div class="activity">
+                        <h4>2. New Topic – Text Properties</h4>
+                        <p>Introduce text styling properties step by step:</p>
+                        
+                        <table class="properties-table">
+                            <thead>
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>color</code></td>
+                                    <td>Changes text color</td>
+                                    <td><code>color: red;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>font-size</code></td>
+                                    <td>Changes size of text</td>
+                                    <td><code>font-size: 20px;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>font-family</code></td>
+                                    <td>Sets the text font</td>
+                                    <td><code>font-family: Arial;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>font-weight</code></td>
+                                    <td>Makes text bold</td>
+                                    <td><code>font-weight: bold;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>text-align</code></td>
+                                    <td>Aligns text (left, center, right)</td>
+                                    <td><code>text-align: center;</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>text-decoration</code></td>
+                                    <td>Adds underline/line-through</td>
+                                    <td><code>text-decoration: underline;</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="practice-exercise">
+                            <h4>👉 Practice Exercise:</h4>
+                            <p>Students apply all these properties to style their name:</p>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;h1</span> <span class="attribute">class</span>=<span class="value">"my-name"</span><span class="tag">&gt;</span><span class="text">Kareem the Coder</span><span class="tag">&lt;/h1&gt;</span><br><br>
+                                    <span class="selector">.my-name</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">darkblue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-size</span><span class="punctuation">:</span> <span class="value">40px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">"Comic Sans MS"</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">underline</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="styled-name">
+                                Kareem the Coder
+                            </div>
+                            
+                            <p>Let students experiment with different colors, fonts, and alignments.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>🕑 Hour 2: Colors and Mini Project</h3>
+                
+                <div class="time-block">
+                    <div class="time">20 mins</div>
+                    <div class="activity">
+                        <h4>3. Understanding Colors</h4>
+                        <p>Explain the 3 color types with simple visuals:</p>
+                        
+                        <div class="color-examples">
+                            <div class="color-card color-name">
+                                Color names<br>(e.g., red, green, blue)
+                            </div>
+                            <div class="color-card color-hex">
+                                HEX codes<br>(e.g., #ff0000)
+                            </div>
+                            <div class="color-card color-rgb">
+                                RGB values<br>(e.g., rgb(255, 0, 0))
+                            </div>
+                        </div>
+                        
+                        <p>🧩 Mini Activity:</p>
+                        <p>Ask kids to guess colors from HEX codes (like #00ff00 → green).</p>
+                        
+                        <div class="color-examples">
+                            <div class="color-card color-green">
+                                #00ff00 → Green
+                            </div>
+                            <div class="color-card color-blue">
+                                #0000ff → Blue
+                            </div>
+                            <div class="color-card color-purple">
+                                #800080 → Purple
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">15 mins</div>
+                    <div class="activity">
+                        <h4>4. Adding Google Fonts</h4>
+                        <p>Introduce <a href="https://fonts.google.com" target="_blank">Google Fonts</a>:</p>
+                        <ul>
+                            <li>Go to the site and pick a font.</li>
+                            <li>Copy the <code>&lt;link&gt;</code> tag into HTML <code>&lt;head&gt;</code>.</li>
+                            <li>Use it in CSS with <code>font-family:</code>.</li>
+                        </ul>
+                        
+                        <div class="google-fonts-demo">
+                            <p>Example:</p>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;link</span> <span class="attribute">href</span>=<span class="value">"https://fonts.googleapis.com/css2?family=Pacifico&display=swap"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span><span class="tag">&gt;</span><br><br>
+                                    <span class="selector">h1</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">"Pacifico", cursive</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="font-example">
+                                <p class="pacifico-font">This text uses the Pacifico font from Google Fonts!</p>
+                                <p class="comic-neue-font">This text uses the Comic Neue font from Google Fonts!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">25 mins</div>
+                    <div class="activity">
+                        <h4>5. 🎨 Mini Project: "My Favorite Quote"</h4>
+                        <p>Students design a web page that displays their favorite quote with styled text.</p>
+                        
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Use a background color or image.</li>
+                            <li>Style the text with color, font, and alignment.</li>
+                            <li>Include their name as the author.</li>
+                        </ul>
+                        
+                        <div class="mini-project">
+                            <p>Example Output:</p>
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;h1</span> <span class="attribute">class</span>=<span class="value">"quote"</span><span class="tag">&gt;</span><span class="text">"The future belongs to those who code!"</span><span class="tag">&lt;/h1&gt;</span><br>
+                                    <span class="tag">&lt;p</span> <span class="attribute">class</span>=<span class="value">"author"</span><span class="tag">&gt;</span><span class="text">– Kareem</span><span class="tag">&lt;/p&gt;</span><br><br>
+                                    <span class="selector">body</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">lavender</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">.quote</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">#3333cc</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-family</span><span class="punctuation">:</span> <span class="value">"Pacifico", cursive</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-size</span><span class="punctuation">:</span> <span class="value">36px</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span><br><br>
+                                    <span class="selector">.author</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">#555</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;<span class="property">font-style</span><span class="punctuation">:</span> <span class="value">italic</span><span class="punctuation">;</span><br>
+                                    <span class="punctuation">}</span>
+                                </code>
+                            </div>
+                            
+                            <div class="quote-example">
+                                <h1 class="quote-text">"The future belongs to those who code!"</h1>
+                                <p class="quote-author">– Kareem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-block">
+                    <div class="time">10 mins</div>
+                    <div class="activity">
+                        <h4>6. 🏁 Wrap-Up</h4>
+                        <p>Review: What is <code>font-family</code>? What is HEX color?</p>
+                        <p>Encourage them to try mixing fonts and colors at home.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="homework">
+            <h2>📚 Homework</h2>
+            <div class="homework">
+                <p>Create a "My Favorite Song Lyrics" page using text styles and colors.</p>
+                <p><strong>Requirements:</strong></p>
+                <ul>
+                    <li>Use at least 3 different text properties (color, font-family, font-size, etc.)</li>
+                    <li>Include at least 2 different color types (name, HEX, or RGB)</li>
+                    <li>Use at least one Google Font</li>
+                    <li>Style the background with a color or gradient</li>
+                    <li>Make sure the text is readable against the background</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="materials">
+            <h2>📚 Materials Needed</h2>
+            <ul>
+                <li>Laptops with text editors (VS Code or online editor like CodePen)</li>
+                <li>Internet connection for Google Fonts</li>
+                <li>Example color chart (print or show on screen)</li>
+                <li>Week 6 slides or handouts (CSS color and text summary)</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Week 6: Styling Text and Colors with CSS</p>
+            <p>Make your text beautiful and expressive with CSS styling! 🎨</p>
+        </footer>
+    </div>
+</body>
+</html>
