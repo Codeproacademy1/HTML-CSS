@@ -1,0 +1,299 @@
+🗓️ Week 5: Introduction to CSS — Making Websites Look Awesome 🎨
+🎯 Learning Goals
+
+By the end of this week, students will:
+
+Understand what CSS is and why we use it.
+
+Know the basic structure of a CSS rule: selector { property: value; }.
+
+Be able to change text color, background color, and font size.
+
+Add CSS to their existing HTML files (using <style> or an external .css file).
+
+Create a colorful, styled version of their “Personal Website.”
+
+🧠 Key Vocabulary
+Term	Meaning
+CSS	Cascading Style Sheets – used to style web pages
+Selector	The part that chooses what to style
+Property	What you want to change (like color, font-size)
+Value	The new setting (like red, 20px)
+Inline CSS	Style written inside a tag
+Internal CSS	Style written inside <style> in <head>
+External CSS	Style written in a separate .css file
+Color	The visual appearance of text or background
+⏰ Class Timing (75 minutes)
+Time	Activity
+0–10 min	Review and warm-up
+10–25 min	What is CSS & how it works
+25–45 min	Internal CSS and basic text styles
+45–65 min	Background colors, borders, and fun styling
+65–75 min	Mini project + Homework explanation
+💬 Warm-up (10 minutes)
+
+Ask:
+
+“Who remembers how our website looked last week?”
+
+“Do you think we can make it colorful and cool?”
+
+“What colors do you want for your page?”
+
+Show an example before and after adding CSS:
+🖥️ Plain HTML page → 🎨 Styled CSS page
+
+Kids will instantly get excited to start styling!
+
+🧩 Step-by-Step Lesson
+🎨 Part 1: What is CSS? (15 minutes)
+
+Explain:
+
+“HTML builds the structure — like the walls of a house.
+CSS is the paint, decorations, and style!”
+
+Show the structure of a CSS rule:
+
+selector {
+  property: value;
+}
+
+
+Example:
+
+h1 {
+  color: blue;
+}
+
+
+💡 Explain:
+
+h1 → tells the browser what to style (selector).
+
+color → what you want to change (property).
+
+blue → how you want to change it (value).
+
+🎨 Part 2: Internal CSS (20 minutes)
+
+Show how to add a <style> section inside the <head>:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Personal Website</title>
+    <style>
+      body {
+        background-color: lightyellow;
+      }
+
+      h1 {
+        color: darkblue;
+        font-family: Arial;
+      }
+
+      p {
+        color: darkgreen;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to My Website</h1>
+    <p>Hi! I'm Kareem. I love coding and learning new things!</p>
+  </body>
+</html>
+
+
+💬 Discuss:
+
+background-color changes the whole page color.
+
+color changes text color.
+
+font-family changes the font.
+
+font-size changes how big the text is.
+
+🧠 Fun Exercise:
+
+“Change the background to your favorite color and make the text readable.”
+
+Encourage creativity but remind them:
+
+“Bright text on bright backgrounds is hard to read!”
+
+🌈 Part 3: Styling Multiple Elements (15 minutes)
+
+Show how they can style lists, links, and sections:
+
+ul {
+  color: purple;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+section {
+  background-color: #f0f8ff;
+  padding: 10px;
+  border: 2px solid #ccc;
+}
+
+
+💡 Explain:
+
+padding adds space inside an element.
+
+border adds a line around an element.
+
+#f0f8ff is a hex color code (advanced concept — just introduce it lightly).
+
+🧠 Mini Activity:
+
+“Add borders to your sections and make each section have a different background color!”
+
+🧱 Part 4: Inline vs Internal vs External CSS (10 minutes)
+
+Show the three ways to use CSS:
+
+Inline CSS (inside a tag)
+
+<h1 style="color:red;">Hello</h1>
+
+
+➤ Use only for quick changes.
+
+Internal CSS (inside <style>)
+
+<style> p { color: blue; } </style>
+
+
+➤ Best for small projects.
+
+External CSS (in another file)
+
+<link rel="stylesheet" href="style.css">
+
+
+➤ Best for big projects (will be used later in Week 6).
+
+💪 Part 5: Mini Project — “My Styled Website” (15 minutes)
+
+Goal: Add CSS to their “Personal Website” from Week 4.
+
+✅ Requirements:
+
+Change the background color of the page.
+
+Make the main heading (h1) a fun color.
+
+Style paragraphs with a readable font.
+
+Give each section a border and some padding.
+
+Change link colors in the <nav> bar.
+
+Example:
+
+body {
+  background-color: #fef9e7;
+  font-family: "Comic Sans MS";
+}
+
+header {
+  background-color: #aed6f1;
+  padding: 10px;
+}
+
+nav a {
+  color: darkblue;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+footer {
+  background-color: #d5f5e3;
+  padding: 5px;
+  text-align: center;
+}
+
+
+Encourage kids to test colors using color names (red, green, lightblue) or hex codes (optional).
+
+🎉 Show & Tell (5 minutes)
+
+Have a “Website Parade” where 3–4 students show:
+
+Their chosen color combinations.
+
+Cool fonts or section styles.
+
+Ask:
+
+“What colors did you pick and why?”
+
+“Who made their website easy to read?”
+
+Reward creativity with fun badges like 🌈 “Color Master” or 🎨 “Design Star”.
+
+🏡 Homework
+
+Add at least 3 new CSS rules (e.g., style lists, links, or headers).
+
+Try two different background colors and pick their favorite one.
+
+Save the project as my_styled_website.html.
+
+✅ Assessment & Success Criteria
+Skill	What to Check	Success
+Added CSS correctly	<style> inside <head>	✅
+Changed text colors	Used color: property	✅
+Changed background	Used background-color:	✅
+Styled multiple elements	Headers, paragraphs, lists	✅
+Creativity	Fun colors and readable design	🌟 Bonus
+⚠️ Common Mistakes
+Mistake	What Happens	Fix
+Missing curly braces {}	CSS stops working	Always use { property: value; }
+Forgetting ; at end of line	Only first rule works	Add semicolons after each rule
+Writing CSS inside <body>	Doesn’t apply	Write it inside <head>
+Dark text on dark background	Hard to read	Choose high contrast colors
+🎯 Bonus Challenge (for fast learners)
+
+Add a hover effect for links:
+
+a:hover {
+  color: orange;
+}
+
+
+Make the footer text smaller:
+
+footer {
+  font-size: 14px;
+}
+
+
+Use a Google Font (introduce briefly):
+
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Comic Neue', cursive; }
+</style>
+
+🧰 Teacher Tips
+
+Bring color charts or let students explore colorpicker.me
+ (if online).
+
+Let students experiment — don’t restrict their color choices unless text is unreadable.
+
+Encourage sharing ideas like “Who found the nicest background?”
+
+If a student’s CSS breaks, help debug by checking for {}, ;, or where <style> is placed.
+
+Preview next week: “Next time, we’ll learn how to make our websites look organized — with boxes, alignment, and spacing!”
