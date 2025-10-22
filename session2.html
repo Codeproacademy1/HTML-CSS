@@ -1,126 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Session 2 - Book Store Project</title>
-  <style>
-    body {
-      background-color: #fff8e7;
-      font-family: "Comic Sans MS", sans-serif;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #d2691e;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      color: #8b4513;
-      margin-top: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      margin: 10px auto;
-      width: 80%;
-    }
-
-    ul {
-      list-style-type: "📘 ";
-      text-align: left;
-      display: inline-block;
-      font-size: 18px;
-      margin: 15px auto;
-    }
-
-    pre {
-      text-align: left;
-      background: #f9f9f9;
-      border: 2px solid #dcdcdc;
-      padding: 15px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 16px;
-      overflow-x: auto;
-    }
-
-    img {
-      border-radius: 10px;
-      margin: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
-
-    .session-btn {
-      display: inline-block;
-      text-decoration: none;
-      background-color: #d2691e;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: 0.3s;
-      margin-top: 30px;
-    }
-
-    .session-btn:hover {
-      background-color: #a0522d;
-      transform: scale(1.05);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Session 2: Headings, Paragraphs & Lists</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #11998e;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #f0f9f7;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            color: #11998e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f9f7;
+        }
+        
+        /* Learning Goals */
+        .learning-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .goal-card {
+            background-color: #f8fffd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #11998e;
+        }
+        
+        /* Vocabulary */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .vocab-table th, .vocab-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .vocab-table th {
+            background-color: #f0f9f7;
+            color: #11998e;
+        }
+        
+        /* Schedule */
+        .schedule {
+            margin-top: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8fffd;
+            border-radius: 8px;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #11998e;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            color: #63b3ed;
+        }
+        
+        .text {
+            color: #f7fafc;
+        }
+        
+        .comment {
+            color: #a0aec0;
+        }
+        
+        /* Project Example */
+        .project-example {
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #0ea5e9;
+        }
+        
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background-color: #f8fffd;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .success {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Visual Examples */
+        .visual-example {
+            background-color: #f8fffd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #38ef7d;
+        }
+        
+        .example-headings h1 {
+            color: #11998e;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .example-headings h2 {
+            color: #38b2ac;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .example-headings h3 {
+            color: #4fd1c7;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .example-lists {
+            margin: 20px 0;
+        }
+        
+        .example-lists ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .example-lists ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        
+        .example-lists li {
+            margin-bottom: 5px;
+        }
+        
+        .text-formatting strong {
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .text-formatting em {
+            font-style: italic;
+            color: #2d3748;
+        }
+        
+        /* Common Mistakes */
+        .mistakes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .mistakes-table th, .mistakes-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .mistakes-table th {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .mistakes-table tr:nth-child(even) {
+            background-color: #fef2f2;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Session 2: Book Store Project</h1>
-
-  <p>In this session, we’ll create a simple website for a <b>Book Store</b> using HTML.  
-  You’ll learn how to add text, structure a page, and display images online!</p>
-
-  <h2>🧠 What You Will Learn</h2>
-  <ul>
-    <li>How to write the structure of an HTML page</li>
-    <li>How to use headings, paragraphs, and images</li>
-    <li>How to describe your project using text and color</li>
-  </ul>
-
-  <h2>💻 Example Code</h2>
-  <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel="stylesheet" href="styles.css"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1 class="title"&gt;Book Store&lt;/h1&gt;
-    &lt;p class="Author1"&gt;About the author of "The Story of Egypt"&lt;/p&gt;
-    &lt;p class="Author2"&gt;His name is Kareem Ashraf, he graduated from the Faculty of Arts.&lt;/p&gt;
-    &lt;p class="mybook"&gt;My book talks about Egyptian culture.&lt;/p&gt;
-    &lt;p class="cost"&gt;Price: 200$&lt;/p&gt;
-    &lt;img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="250"&gt;
-    &lt;img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="200"&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-  </pre>
-
-  <h2>🎯 Your Task</h2>
-  <ul>
-    <li>Recreate the same webpage in your editor.</li>
-    <li>Change the title and author name to your favorite book.</li>
-    <li>Add two images of your own choice.</li>
-    <li>Try to change the background color in <b>styles.css</b>.</li>
-  </ul>
-
-  <h2>📚 Example Preview</h2>
-  <img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="200">
-  <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="200">
-
-  <br>
-  <a href="index.html" class="session-btn">⬅ Back to Home</a>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Session 2: Headings, Paragraphs & Lists</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#learning-goals">Learning Goals</a></li>
+                <li><a href="#vocabulary">Key Vocabulary</a></li>
+                <li><a href="#schedule">Class Schedule</a></li>
+                <li><a href="#warmup">Warm-up</a></li>
+                <li><a href="#lesson">Step-by-Step Lesson</a></li>
+                <li><a href="#project">Mini Project</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </nav>
+        
+        <section id="learning-goals">
+            <h2>🎯 Learning Goals</h2>
+            <p>By the end of this lesson, students will:</p>
+            <div class="learning-goals">
+                <div class="goal-card">
+                    <h3>Review Week 1</h3>
+                    <p>Review what they learned in Week 1 (basic HTML structure).</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Use Headings</h3>
+                    <p>Use headings (&lt;h1&gt;–&lt;h6&gt;) to organize text.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Create Lists</h3>
+                    <p>Create lists — both ordered (&lt;ol&gt;) and unordered (&lt;ul&gt;).</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Text Formatting</h3>
+                    <p>Use text formatting tags (&lt;strong&gt;, &lt;em&gt;) to make words bold or italic.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Build Webpage</h3>
+                    <p>Build a webpage called "All About Me" that includes headings, paragraphs, and lists.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vocabulary">
+            <h2>🧠 Key Vocabulary</h2>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Heading</td>
+                        <td>A title or subtitle on a webpage (&lt;h1&gt;–&lt;h6&gt;)</td>
+                    </tr>
+                    <tr>
+                        <td>Paragraph</td>
+                        <td>A block of normal text (&lt;p&gt;)</td>
+                    </tr>
+                    <tr>
+                        <td>Ordered List</td>
+                        <td>A numbered list (&lt;ol&gt;)</td>
+                    </tr>
+                    <tr>
+                        <td>Unordered List</td>
+                        <td>A bullet list (&lt;ul&gt;)</td>
+                    </tr>
+                    <tr>
+                        <td>List Item</td>
+                        <td>Each point in a list (&lt;li&gt;)</td>
+                    </tr>
+                    <tr>
+                        <td>Strong</td>
+                        <td>Makes text bold</td>
+                    </tr>
+                    <tr>
+                        <td>Emphasis</td>
+                        <td>Makes text italic</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="schedule">
+            <h2>⏰ Class Timing (75 minutes)</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <div class="time">0–10 min</div>
+                    <div class="activity">Warm-up & Week 1 review</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10–20 min</div>
+                    <div class="activity">Introduce headings & paragraphs</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">20–35 min</div>
+                    <div class="activity">Learn lists (&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;)</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">35–55 min</div>
+                    <div class="activity">Learn text formatting (&lt;strong&gt;, &lt;em&gt;)</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">55–70 min</div>
+                    <div class="activity">Mini project: "All About Me" page</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">70–75 min</div>
+                    <div class="activity">Show & Tell + Homework</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="warmup">
+            <h2>💬 Warm-up (10 minutes)</h2>
+            <p>Start with fun questions:</p>
+            <ul>
+                <li>"Who remembers what &lt;p&gt; means?"</li>
+                <li>"How do we make a big title on a page?"</li>
+                <li>"What's inside the &lt;body&gt; tag?"</li>
+            </ul>
+            <p>Open one student's Week 1 project and show it on screen.</p>
+            <p>Praise creativity — "This looks great! Let's make it even better today!"</p>
+        </section>
+        
+        <section id="lesson">
+            <h2>🧩 Step-by-Step Lesson</h2>
+            
+            <div class="visual-example">
+                <h3>🧱 Part 1: Headings & Paragraphs (10 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Websites use headings to make text easier to read — like titles and subtitles in a book."</p>
+                
+                <p>Show example:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h1&gt;</span><span class="text">My Favorite Hobby</span><span class="tag">&lt;/h1&gt;</span><br>
+                        <span class="tag">&lt;h2&gt;</span><span class="text">Playing Football</span><span class="tag">&lt;/h2&gt;</span><br>
+                        <span class="tag">&lt;p&gt;</span><span class="text">I play football every weekend with my friends. I love being the goalkeeper!</span><span class="tag">&lt;/p&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="example-headings">
+                    <h1>My Favorite Hobby</h1>
+                    <h2>Playing Football</h2>
+                    <p>I play football every weekend with my friends. I love being the goalkeeper!</p>
+                </div>
+                
+                <p>Discuss:</p>
+                <ul>
+                    <li>&lt;h1&gt; is the main heading (only one per page).</li>
+                    <li>&lt;h2&gt;, &lt;h3&gt;... are smaller sub-headings.</li>
+                    <li>&lt;p&gt; is for normal sentences.</li>
+                </ul>
+                
+                <p>Activity:</p>
+                <p>"Try to make a page with your favorite hobby. Use one &lt;h1&gt; and one &lt;h2&gt;."</p>
+            </div>
+            
+            <div class="visual-example">
+                <h3>🔢 Part 2: Lists (15 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Lists help us organize information — like your favorite foods or top games."</p>
+                
+                <p>Show examples:</p>
+                
+                <p>✅ Unordered (bullet) list</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h2&gt;</span><span class="text">My Favorite Foods</span><span class="tag">&lt;/h2&gt;</span><br>
+                        <span class="tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Pizza</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Burgers</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Ice Cream</span><span class="tag">&lt;/li&gt;</span><br>
+                        <span class="tag">&lt;/ul&gt;</span>
+                    </code>
+                </div>
+                
+                <p>🔢 Ordered (numbered) list</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h2&gt;</span><span class="text">Top 3 Games</span><span class="tag">&lt;/h2&gt;</span><br>
+                        <span class="tag">&lt;ol&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Minecraft</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Roblox</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Fortnite</span><span class="tag">&lt;/li&gt;</span><br>
+                        <span class="tag">&lt;/ol&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="example-lists">
+                    <h2>My Favorite Foods</h2>
+                    <ul>
+                        <li>Pizza</li>
+                        <li>Burgers</li>
+                        <li>Ice Cream</li>
+                    </ul>
+                    
+                    <h2>Top 3 Games</h2>
+                    <ol>
+                        <li>Minecraft</li>
+                        <li>Roblox</li>
+                        <li>Fortnite</li>
+                    </ol>
+                </div>
+                
+                <p>Ask:</p>
+                <ul>
+                    <li>"What's the difference between &lt;ul&gt; and &lt;ol&gt;?"</li>
+                    <li>"What tag do we use for each list item?" → &lt;li&gt;</li>
+                </ul>
+                
+                <p>Activity:</p>
+                <p>"Make two lists — one ordered, one unordered. Choose your own topics!"</p>
+            </div>
+            
+            <div class="visual-example">
+                <h3>💪 Part 3: Text Formatting (20 minutes)</h3>
+                <p>Explain:</p>
+                <p>"We can make text stand out using bold or italic tags."</p>
+                
+                <p>Show:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;p&gt;</span><span class="text">My favorite sport is </span><span class="tag">&lt;strong&gt;</span><span class="text">football</span><span class="tag">&lt;/strong&gt;</span><span class="text"> because it's exciting!</span><span class="tag">&lt;/p&gt;</span><br>
+                        <span class="tag">&lt;p&gt;</span><span class="text">I also enjoy </span><span class="tag">&lt;em&gt;</span><span class="text">drawing</span><span class="tag">&lt;/em&gt;</span><span class="text"> and </span><span class="tag">&lt;em&gt;</span><span class="text">reading books</span><span class="tag">&lt;/em&gt;</span><span class="text">.</span><span class="tag">&lt;/p&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="text-formatting">
+                    <p>My favorite sport is <strong>football</strong> because it's exciting!</p>
+                    <p>I also enjoy <em>drawing</em> and <em>reading books</em>.</p>
+                </div>
+                
+                <p>💡 Tip:</p>
+                <ul>
+                    <li>&lt;strong&gt; means important text (bold).</li>
+                    <li>&lt;em&gt; means emphasized text (italic).</li>
+                </ul>
+                
+                <p>Mini challenge:</p>
+                <p>"In your hobby paragraph, make one word bold and another italic!"</p>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>🏗️ Mini Project (15 minutes) — "All About Me" Page</h2>
+            <p>Students create a web page about themselves.</p>
+            
+            <h3>Requirements:</h3>
+            <ul>
+                <li>✅ One main heading (&lt;h1&gt;)</li>
+                <li>✅ At least one subheading (&lt;h2&gt;)</li>
+                <li>✅ Two paragraphs (&lt;p&gt;)</li>
+                <li>✅ One unordered list (&lt;ul&gt;)</li>
+                <li>✅ One ordered list (&lt;ol&gt;)</li>
+                <li>✅ One &lt;strong&gt; and one &lt;em&gt; tag</li>
+            </ul>
+            
+            <div class="project-example">
+                <h3>Example:</h3>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="tag">&lt;html&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">All About Me</span><span class="tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">All About Me</span><span class="tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Hi! My name is </span><span class="tag">&lt;strong&gt;</span><span class="text">Kareem</span><span class="tag">&lt;/strong&gt;</span><span class="text">. I love coding and learning new things!</span><span class="tag">&lt;/p&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">My Hobbies</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Playing football</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Drawing</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Watching movies</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">My Top 3 Favorite Foods</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ol&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Pizza</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Pasta</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Burgers</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ol&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">I'm </span><span class="tag">&lt;em&gt;</span><span class="text">super excited</span><span class="tag">&lt;/em&gt;</span><span class="text"> to learn how to make cool websites!</span><span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span><br>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </code>
+                </div>
+            </div>
+        </section>
+        
+        <section id="show-tell">
+            <h2>🎉 Show & Tell (5 minutes)</h2>
+            <p>Invite 2-3 kids to share their "All About Me" pages.</p>
+            <p>Ask fun questions:</p>
+            <ul>
+                <li>"What's your favorite part of your page?"</li>
+                <li>"Who added a bold or italic word?"</li>
+                <li>"Who used an ordered list?"</li>
+            </ul>
+            <p>👏 Celebrate effort and creativity — give stars or stickers!</p>
+        </section>
+        
+        <section id="homework">
+            <h2>🏡 Homework</h2>
+            <ul>
+                <li>Add one more list (e.g. "My Favorite Animals" or "Places I Want to Visit").</li>
+                <li>Add at least one new tag we learned today (heading, list, or text style).</li>
+                <li>Save the file as about.html in their project folder.</li>
+            </ul>
+        </section>
+        
+        <section id="bonus">
+            <h2>🎯 Bonus Challenge (optional for fast learners)</h2>
+            <p>Encourage advanced or curious students:</p>
+            <p>"Add emojis in your lists and headings!"</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;h2&gt;</span><span class="text">🏆 My Top 3 Games</span><span class="tag">&lt;/h2&gt;</span><br>
+                    <span class="tag">&lt;ol&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Minecraft ⛏️</span><span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Roblox 🤖</span><span class="tag">&lt;/li&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="text">Fortnite 🎯</span><span class="tag">&lt;/li&gt;</span><br>
+                    <span class="tag">&lt;/ol&gt;</span>
+                </code>
+            </div>
+            <p>Or use different heading levels:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;h3&gt;</span><span class="text">My Weekend Routine</span><span class="tag">&lt;/h3&gt;</span>
+                </code>
+            </div>
+        </section>
+        
+        <section id="assessment">
+            <h2>✅ Assessment & Success Criteria</h2>
+            <div class="assessment-grid">
+                <div class="skill-card">
+                    <h3>Used headings</h3>
+                    <p>&lt;h1&gt; and &lt;h2&gt; present</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Created lists</h3>
+                    <p>Both &lt;ul&gt; and &lt;ol&gt; used correctly</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Used formatting</h3>
+                    <p>&lt;strong&gt; and &lt;em&gt; tags</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Clear structure</h3>
+                    <p>Logical organization of sections</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Creativity</h3>
+                    <p>Fun personal content</p>
+                    <div class="success">🌟 Bonus</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>⚠️ Common Mistakes</h2>
+            <table class="mistakes-table">
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>What Happens</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Forgetting to close &lt;ul&gt; or &lt;ol&gt;</td>
+                        <td>Everything after becomes a list</td>
+                        <td>Add &lt;/ul&gt; or &lt;/ol&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Writing &lt;li&gt; outside of list</td>
+                        <td>Doesn't show properly</td>
+                        <td>Move &lt;li&gt; inside &lt;ul&gt; or &lt;ol&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Using &lt;strong&gt; around heading</td>
+                        <td>Makes no visual difference</td>
+                        <td>Use &lt;strong&gt; inside paragraphs only</td>
+                    </tr>
+                    <tr>
+                        <td>Forgetting &lt;body&gt;</td>
+                        <td>Page doesn't display</td>
+                        <td>Always wrap visible content inside &lt;body&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="teacher-tips">
+            <h2>🧰 Teacher Tips</h2>
+            <ul>
+                <li>Keep reviewing Week 1 tags — build familiarity.</li>
+                <li>Use examples from students' lives (foods, hobbies, cartoons).</li>
+                <li>Correct errors together on screen — show "what happens when we forget a closing tag."</li>
+                <li>Encourage teamwork — let them help each other debug.</li>
+                <li>Give them a short printed "HTML tags cheat sheet" with &lt;h1&gt;–&lt;p&gt;–&lt;ul&gt;–&lt;li&gt;.</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Session 2: Headings, Paragraphs & Lists</p>
+            <p>Organize your content with headings, lists, and text formatting!</p>
+        </footer>
+    </div>
 </body>
 </html>
