@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Week 10: Mastering Position and Layers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 3px solid #ff6b6b;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid #ff6b6b;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #ff6b6b;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #fff0f0;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e1e5eb;
+        }
+        
+        section h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fff0f0;
+            font-size: 1.8rem;
+        }
+        
+        /* Learning Objectives */
+        .learning-objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Session Styles */
+        .session {
+            margin-top: 20px;
+        }
+        
+        .time-block {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .selector {
+            color: #63b3ed;
+        }
+        
+        .property {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .punctuation {
+            color: #e2e8f0;
+        }
+        
+        /* Practice Exercises */
+        .practice-exercise {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        /* Positioning Examples */
+        .positioning-examples {
+            margin: 20px 0;
+        }
+        
+        .position-container {
+            position: relative;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin: 20px 0;
+            background: #f8f9fa;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .relative-box {
+            background-color: red;
+            position: relative;
+            left: 50px;
+        }
+        
+        .absolute-box {
+            background-color: blue;
+            position: absolute;
+            top: 50px;
+            left: 150px;
+        }
+        
+        /* Sticky Header Example */
+        .sticky-example {
+            height: 400px;
+            overflow-y: scroll;
+            border: 2px solid #e1e5eb;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: orange;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .sticky-header:hover {
+            background: darkorange;
+        }
+        
+        .sticky-content {
+            padding: 20px;
+            height: 800px;
+        }
+        
+        /* Z-Index Examples */
+        .z-index-examples {
+            position: relative;
+            height: 200px;
+            margin: 20px 0;
+        }
+        
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .red-circle { 
+            background: red; 
+            top: 50px; 
+            left: 50px; 
+            z-index: 1; 
+        }
+        
+        .green-circle { 
+            background: green; 
+            top: 80px; 
+            left: 80px; 
+            z-index: 2; 
+        }
+        
+        .blue-circle { 
+            background: blue; 
+            top: 110px; 
+            left: 110px; 
+            z-index: 3; 
+        }
+        
+        /* Project Example */
+        .project-example {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid #ff6b6b;
+        }
+        
+        .sky-scene {
+            background: skyblue;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .sun {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 80px;
+            height: 80px;
+            background: yellow;
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 20px yellow;
+        }
+        
+        .cloud {
+            position: absolute;
+            top: 100px;
+            width: 100px;
+            height: 50px;
+            background: white;
+            border-radius: 50px;
+            z-index: 2;
+            animation: move 10s linear infinite;
+        }
+        
+        .cloud:before, .cloud:after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .cloud:before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 20px;
+        }
+        
+        .cloud:after {
+            width: 30px;
+            height: 30px;
+            top: -15px;
+            right: 20px;
+        }
+        
+        @keyframes move {
+            from { left: -120px; }
+            to { left: 100%; }
+        }
+        
+        /* Quiz Section */
+        .quiz {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #fcb69f;
+        }
+        
+        .quiz-question {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        /* Homework */
+        .homework {
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: white;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .time-block {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Week 10: Mastering Position and Layers</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#objectives">Learning Objectives</a></li>
+                <li><a href="#session1">Session 1</a></li>
+                <li><a href="#session2">Session 2</a></li>
+                <li><a href="#session3">Session 3</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#homework">Homework</a></li>
+            </ul>
+        </nav>
+        
+        <section id="objectives">
+            <h2>🌟 Goal of the Week</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-objectives">
+                <div class="objective-card">
+                    <h3>Understand Positioning</h3>
+                    <p>Understand how to position elements on a webpage.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Learn Position Types</h3>
+                    <p>Learn the difference between static, relative, absolute, fixed, and sticky positioning.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Master Z-Index</h3>
+                    <p>Discover how z-index works to layer elements.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Create Animated Scene</h3>
+                    <p>Create a fun "Moving Clouds & Sun" webpage using positioning and layers.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session1">
+            <h2>🧩 Session 1: Understanding Positioning</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li>What does "position" mean in web design?</li>
+                            <li>Default positioning: <code>position: static;</code></li>
+                            <li>Moving elements using:
+                                <ul>
+                                    <li><code>position: relative;</code></li>
+                                    <li><code>position: absolute;</code></li>
+                                    <li><code>top, left, right, and bottom</code> properties</li>
+                                </ul>
+                            </li>
+                            <li>Real-life analogy: "Putting stickers in different places on a board."</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Activity: Move the Box</h4>
+                            <p>Students will create 3 boxes and move them around using CSS positions.</p>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                                    <span class="tag">&lt;html&gt;</span><br>
+                                    <span class="tag">&lt;head&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;style&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.box1</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">red</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">relative</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">left</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.box2</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background-color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">absolute</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">left</span><span class="punctuation">:</span> <span class="value">150px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span><br>
+                                    <span class="tag">&lt;/head&gt;</span><br>
+                                    <span class="tag">&lt;body&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"box1"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"box2"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                                    <span class="tag">&lt;/body&gt;</span><br>
+                                    <span class="tag">&lt;/html&gt;</span>
+                                </code>
+                            </div>
+                            
+                            <div class="positioning-examples">
+                                <div class="position-container">
+                                    <div class="box relative-box">Box 1</div>
+                                    <div class="box absolute-box">Box 2</div>
+                                </div>
+                            </div>
+                            
+                            <h4>🎮 Game Challenge:</h4>
+                            <p>"Can you move the red box so it sits right on top of the blue box?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session2">
+            <h2>🧩 Session 2: Exploring Fixed & Sticky Positions</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li><code>position: fixed;</code> — stays in place when scrolling</li>
+                            <li><code>position: sticky;</code> — sticks when scrolling past it</li>
+                            <li>When to use each</li>
+                            <li>Example: Sticky header or navigation bar</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Activity: Sticky Header Page</h4>
+                            <p>Students create a simple web page with a sticky header.</p>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                                    <span class="tag">&lt;html&gt;</span><br>
+                                    <span class="tag">&lt;head&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;style&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">body</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">1200px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">margin</span><span class="punctuation">:</span> <span class="value">0</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">header</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">sticky</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top</span><span class="punctuation">:</span> <span class="value">0</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">orange</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">color</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">padding</span><span class="punctuation">:</span> <span class="value">15px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">text-align</span><span class="punctuation">:</span> <span class="value">center</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span><br>
+                                    <span class="tag">&lt;/head&gt;</span><br>
+                                    <span class="tag">&lt;body&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;header&gt;</span><span class="text">🌟 I Stick to the Top!</span><span class="tag">&lt;/header&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Scroll down to see me stay here!</span><span class="tag">&lt;/p&gt;</span><br>
+                                    <span class="tag">&lt;/body&gt;</span><br>
+                                    <span class="tag">&lt;/html&gt;</span>
+                                </code>
+                            </div>
+                            
+                            <div class="sticky-example">
+                                <div class="sticky-header">🌟 I Stick to the Top!</div>
+                                <div class="sticky-content">
+                                    <p>Scroll down to see the header stick!</p>
+                                    <p>Keep scrolling...</p>
+                                    <p>Almost there...</p>
+                                    <p>See how the header stays at the top?</p>
+                                    <p>This is <code>position: sticky;</code> in action!</p>
+                                    <p>Try hovering over the header too!</p>
+                                </div>
+                            </div>
+                            
+                            <h4>🎨 Mini Challenge:</h4>
+                            <p>Make the header change color when hovering over it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="session3">
+            <h2>🧩 Session 3: Z-Index and Layering Fun</h2>
+            <div class="session">
+                <div class="time-block">
+                    <div class="time">1 hour</div>
+                    <div class="activity">
+                        <h3>🧠 Topics Covered:</h3>
+                        <ul>
+                            <li>What is z-index?</li>
+                            <li>How layers work — front and back order</li>
+                            <li>Using z-index with positioned elements</li>
+                        </ul>
+                        
+                        <div class="practice-exercise">
+                            <h4>💻 Activity: Layered Art</h4>
+                            <p>Students create 3 overlapping circles and adjust their z-index to bring one in front or back.</p>
+                            
+                            <div class="code-example">
+                                <code>
+                                    <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                                    <span class="tag">&lt;html&gt;</span><br>
+                                    <span class="tag">&lt;head&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;style&gt;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.circle</span> <span class="punctuation">{</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">50%</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">absolute</span><span class="punctuation">;</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.red</span> <span class="punctuation">{</span> <span class="property">background</span><span class="punctuation">:</span> <span class="value">red</span><span class="punctuation">;</span> <span class="property">top</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span> <span class="property">left</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span> <span class="property">z-index</span><span class="punctuation">:</span> <span class="value">1</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.green</span> <span class="punctuation">{</span> <span class="property">background</span><span class="punctuation">:</span> <span class="value">green</span><span class="punctuation">;</span> <span class="property">top</span><span class="punctuation">:</span> <span class="value">80px</span><span class="punctuation">;</span> <span class="property">left</span><span class="punctuation">:</span> <span class="value">80px</span><span class="punctuation">;</span> <span class="property">z-index</span><span class="punctuation">:</span> <span class="value">2</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.blue</span> <span class="punctuation">{</span> <span class="property">background</span><span class="punctuation">:</span> <span class="value">blue</span><span class="punctuation">;</span> <span class="property">top</span><span class="punctuation">:</span> <span class="value">110px</span><span class="punctuation">;</span> <span class="property">left</span><span class="punctuation">:</span> <span class="value">110px</span><span class="punctuation">;</span> <span class="property">z-index</span><span class="punctuation">:</span> <span class="value">3</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span><br>
+                                    <span class="tag">&lt;/head&gt;</span><br>
+                                    <span class="tag">&lt;body&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"circle red"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"circle green"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                                    &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"circle blue"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                                    <span class="tag">&lt;/body&gt;</span><br>
+                                    <span class="tag">&lt;/html&gt;</span>
+                                </code>
+                            </div>
+                            
+                            <div class="z-index-examples">
+                                <div class="circle red-circle">z: 1</div>
+                                <div class="circle green-circle">z: 2</div>
+                                <div class="circle blue-circle">z: 3</div>
+                            </div>
+                            
+                            <h4>🎮 Mini Game:</h4>
+                            <p>"Who's on top?" — students reorder layers by changing z-index values.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>🎨 Project of the Week: Moving Clouds & Sun Animation</h2>
+            <div class="project-example">
+                <h3>🧠 Objective:</h3>
+                <p>Combine positioning, layering, and basic animation.</p>
+                
+                <h3>💻 Example Project:</h3>
+                <p>Create a page with a sky, sun, and clouds that move across the screen.</p>
+                
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="tag">&lt;html&gt;</span><br>
+                        <span class="tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;style&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">body</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">skyblue</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">300px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">overflow</span><span class="punctuation">:</span> <span class="value">hidden</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.sun</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">absolute</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">left</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">80px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">80px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">yellow</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">50%</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">z-index</span><span class="punctuation">:</span> <span class="value">3</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">.cloud</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">position</span><span class="punctuation">:</span> <span class="value">absolute</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">width</span><span class="punctuation">:</span> <span class="value">100px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">height</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">background</span><span class="punctuation">:</span> <span class="value">white</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">50px</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">z-index</span><span class="punctuation">:</span> <span class="value">2</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">animation</span><span class="punctuation">:</span> <span class="value">move 10s linear infinite</span><span class="punctuation">;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="selector">@keyframes move</span> <span class="punctuation">{</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">from</span> <span class="punctuation">{</span> <span class="property">left</span><span class="punctuation">:</span> <span class="value">-120px</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">to</span> <span class="punctuation">{</span> <span class="property">left</span><span class="punctuation">:</span> <span class="value">100%</span><span class="punctuation">;</span> <span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="punctuation">}</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/style&gt;</span><br>
+                        <span class="tag">&lt;/head&gt;</span><br>
+                        <span class="tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"sun"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"cloud"</span> <span class="attribute">style</span>=<span class="value">"animation-delay: 0s;"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class</span>=<span class="value">"cloud"</span> <span class="attribute">style</span>=<span class="value">"top: 130px; animation-delay: 5s;"</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span><br>
+                        <span class="tag">&lt;/body&gt;</span><br>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="sky-scene">
+                    <div class="sun"></div>
+                    <div class="cloud" style="animation-delay: 0s;"></div>
+                    <div class="cloud" style="top: 130px; animation-delay: 5s;"></div>
+                </div>
+                
+                <h3>✨ Add Fun:</h3>
+                <ul>
+                    <li>Change cloud sizes</li>
+                    <li>Add a bird image that flies across</li>
+                    <li>Make the sun move up and down like sunrise and sunset</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="quiz">
+            <h2>🧠 Mini Quiz</h2>
+            <div class="quiz">
+                <div class="quiz-question">
+                    <h4>Q1: What does <code>position: fixed;</code> do?</h4>
+                    <p><strong>Answer:</strong> It makes an element stay in the same position even when the page is scrolled.</p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>Q2: Which property controls which element appears on top?</h4>
+                    <p><strong>Answer:</strong> The <code>z-index</code> property controls the stacking order of elements.</p>
+                </div>
+                
+                <div class="quiz-question">
+                    <h4>Q3: True or False: <code>position: static;</code> allows you to move elements.</h4>
+                    <p><strong>Answer:</strong> False. Static positioning is the default and doesn't allow movement with top, left, right, or bottom properties.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="homework">
+            <h2>🏆 End of Week Challenge</h2>
+            <div class="homework">
+                <p>"Create your own sky scene with the sun, clouds, and mountains using everything you learned about position and z-index!"</p>
+                
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>Use at least 3 different position values (relative, absolute, fixed, or sticky)</li>
+                    <li>Apply z-index to control layering of elements</li>
+                    <li>Include moving elements using CSS animations</li>
+                    <li>Create a visually appealing sky scene with multiple elements</li>
+                    <li>Make sure elements are properly positioned and layered</li>
+                </ul>
+                
+                <h3>Bonus Challenges:</h3>
+                <ul>
+                    <li>Add a mountain range at the bottom using positioned elements</li>
+                    <li>Create birds that fly across the sky</li>
+                    <li>Make the sun rise and set with animation</li>
+                    <li>Add stars that appear at night</li>
+                </ul>
+            </div>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Week 10: Mastering Position and Layers</p>
+            <p>Take control of your webpage layout with advanced positioning techniques! 🎯</p>
+        </footer>
+    </div>
+</body>
+</html>
