@@ -1,149 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Session 3 - Styling with CSS</title>
-  <style>
-    body {
-      background-color: #e7f3ff;
-      font-family: "Comic Sans MS", sans-serif;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #0077b6;
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      color: #023e8a;
-      margin-top: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      margin: 10px auto;
-      width: 85%;
-    }
-
-    ul {
-      list-style-type: "🎨 ";
-      text-align: left;
-      display: inline-block;
-      font-size: 18px;
-      margin: 15px auto;
-    }
-
-    pre {
-      text-align: left;
-      background: #f8f8f8;
-      border: 2px solid #b0d0f0;
-      padding: 15px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 16px;
-      overflow-x: auto;
-    }
-
-    img {
-      border-radius: 10px;
-      margin: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
-
-    .session-btn {
-      display: inline-block;
-      text-decoration: none;
-      background-color: #0077b6;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: 0.3s;
-      margin-top: 30px;
-    }
-
-    .session-btn:hover {
-      background-color: #023e8a;
-      transform: scale(1.05);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course - Session 3: Images, Links & File Structure</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            color: #333;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #FF6B6B;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #fff0f0;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fff0f0;
+        }
+        
+        /* Learning Goals */
+        .learning-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .goal-card {
+            background-color: #fff9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #FF6B6B;
+        }
+        
+        /* Vocabulary */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .vocab-table th, .vocab-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .vocab-table th {
+            background-color: #fff0f0;
+            color: #FF6B6B;
+        }
+        
+        /* Schedule */
+        .schedule {
+            margin-top: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fff9f9;
+            border-radius: 8px;
+        }
+        
+        .time {
+            flex: 0 0 120px;
+            font-weight: bold;
+            color: #FF6B6B;
+        }
+        
+        .activity {
+            flex: 1;
+        }
+        
+        /* Code Examples */
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .tag {
+            color: #63b3ed;
+        }
+        
+        .text {
+            color: #f7fafc;
+        }
+        
+        .attribute {
+            color: #fbb6ce;
+        }
+        
+        .value {
+            color: #faf089;
+        }
+        
+        .comment {
+            color: #a0aec0;
+        }
+        
+        /* Project Example */
+        .project-example {
+            background-color: #fff9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FFE66D;
+        }
+        
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background-color: #fff9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .success {
+            color: #10b981;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Visual Examples */
+        .visual-example {
+            background-color: #fff9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF6B6B;
+        }
+        
+        .example-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .example-image img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .example-links {
+            margin: 20px 0;
+        }
+        
+        .example-links a {
+            color: #FF6B6B;
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .example-links a:hover {
+            background-color: #fff0f0;
+            text-decoration: underline;
+        }
+        
+        /* File Structure */
+        .file-structure {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.8;
+        }
+        
+        .folder {
+            color: #63b3ed;
+        }
+        
+        .file {
+            color: #f7fafc;
+        }
+        
+        /* Common Mistakes */
+        .mistakes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .mistakes-table th, .mistakes-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        .mistakes-table th {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .mistakes-table tr:nth-child(even) {
+            background-color: #fef2f2;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+            }
+            
+            .time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Session 3: Add Colors and Styles with CSS</h1>
-
-  <p>In this session, we’ll learn how to make our Book Store page look <b>beautiful</b> using CSS (Cascading Style Sheets).  
-  CSS lets us change colors, fonts, borders, and even add fun designs!</p>
-
-  <h2>🧠 What You Will Learn</h2>
-  <ul>
-    <li>How to link a CSS file to an HTML page</li>
-    <li>How to color text and backgrounds</li>
-    <li>How to change font sizes and add borders</li>
-    <li>How to make your page more creative</li>
-  </ul>
-
-  <h2>💻 Example Code (styles.css)</h2>
-  <pre>
-/* styles.css */
-
-body {
-  background-color: #fff8e7;
-  font-family: "Comic Sans MS", sans-serif;
-  color: #333;
-}
-
-h1 {
-  color: #d2691e;
-  text-align: center;
-}
-
-p {
-  font-size: 18px;
-  text-align: center;
-}
-
-img {
-  border-radius: 10px;
-  margin: 10px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-}
-
-.cost {
-  color: green;
-  font-weight: bold;
-}
-  </pre>
-
-  <h2>🎨 Example Result</h2>
-  <p>This CSS makes your Book Store webpage look neat and colorful! Here’s what it may look like:</p>
-
-  <img src="https://images-eu.ssl-images-amazon.com/images/I/71LPCoF-MAL._AC_UL210_SR210,210_.jpg" width="200">
-  <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444690560i/26889785.jpg" width="200">
-
-  <h2>🎯 Your Task</h2>
-  <ul>
-    <li>Create a file called <b>styles.css</b>.</li>
-    <li>Write the CSS code shown above.</li>
-    <li>Link it to your HTML page using this line inside &lt;head&gt;:</li>
-  </ul>
-
-  <pre>
-&lt;link rel="stylesheet" href="styles.css"&gt;
-  </pre>
-
-  <ul>
-    <li>Experiment with colors, borders, and font sizes.</li>
-    <li>Make your Book Store page look unique!</li>
-  </ul>
-
-  <a href="index.html" class="session-btn">⬅ Back to Home</a>
+    <header>
+        <div class="container">
+            <h1>HTML & CSS Course</h1>
+            <p>Session 3: Images, Links & File Structure</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#learning-goals">Learning Goals</a></li>
+                <li><a href="#vocabulary">Key Vocabulary</a></li>
+                <li><a href="#schedule">Class Schedule</a></li>
+                <li><a href="#warmup">Warm-up</a></li>
+                <li><a href="#lesson">Step-by-Step Lesson</a></li>
+                <li><a href="#project">Mini Project</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </nav>
+        
+        <section id="learning-goals">
+            <h2>🎯 Learning Goals</h2>
+            <p>By the end of this week, students will:</p>
+            <div class="learning-goals">
+                <div class="goal-card">
+                    <h3>Add Images</h3>
+                    <p>Understand how to add images to their web pages using &lt;img&gt;.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Create Links</h3>
+                    <p>Create links using &lt;a&gt; to connect pages or visit other websites.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Organize Files</h3>
+                    <p>Learn how to organize project files in folders (HTML + images).</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Build Profile Page</h3>
+                    <p>Build a "My Profile Page" that includes their photo, bio, and favorite website links.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vocabulary">
+            <h2>🧠 Key Vocabulary</h2>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;img&gt;</td>
+                        <td>HTML tag to show an image</td>
+                    </tr>
+                    <tr>
+                        <td>src</td>
+                        <td>The image's file path (source)</td>
+                    </tr>
+                    <tr>
+                        <td>alt</td>
+                        <td>Text shown if the image doesn't load</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;a&gt;</td>
+                        <td>Anchor tag — creates a link</td>
+                    </tr>
+                    <tr>
+                        <td>href</td>
+                        <td>The web address or file path to link to</td>
+                    </tr>
+                    <tr>
+                        <td>File path</td>
+                        <td>The location of a file in your project (like images/me.jpg)</td>
+                    </tr>
+                    <tr>
+                        <td>Folder</td>
+                        <td>A place to store files (helps keep your project neat)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="schedule">
+            <h2>⏰ Class Timing (75 minutes)</h2>
+            <div class="schedule">
+                <div class="schedule-item">
+                    <div class="time">0–10 min</div>
+                    <div class="activity">Warm-up & recap from Week 2</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10–25 min</div>
+                    <div class="activity">Learn about images (&lt;img&gt; tag)</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">25–45 min</div>
+                    <div class="activity">Learn about links (&lt;a&gt; tag)</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">45–60 min</div>
+                    <div class="activity">Organize folders & add images correctly</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">60–70 min</div>
+                    <div class="activity">Mini Project: "My Profile Page"</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="time">70–75 min</div>
+                    <div class="activity">Show & Tell + Homework</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="warmup">
+            <h2>💬 Warm-up (10 minutes)</h2>
+            <p>Ask:</p>
+            <ul>
+                <li>"Who remembers what &lt;ul&gt; does?"</li>
+                <li>"What does &lt;strong&gt; do?"</li>
+                <li>"What do you think a website uses to show pictures?"</li>
+            </ul>
+            <p>Explain:</p>
+            <p>"Today, you'll make your page look alive with images and links — just like real websites!"</p>
+            <p>Show examples from familiar sites (like a news site with images and links).</p>
+        </section>
+        
+        <section id="lesson">
+            <h2>🧩 Step-by-Step Lesson</h2>
+            
+            <div class="visual-example">
+                <h3>🖼️ Part 1: Adding Images (15 minutes)</h3>
+                <p>Explain:</p>
+                <p>"The &lt;img&gt; tag shows pictures on your webpage. It doesn't need a closing tag!"</p>
+                
+                <p>Syntax:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/myphoto.jpg"</span> <span class="attribute">alt</span>=<span class="value">"My photo"</span><span class="tag">&gt;</span>
+                    </code>
+                </div>
+                
+                <p>Break it down:</p>
+                <ul>
+                    <li><strong>src</strong> → tells the browser where the image is.</li>
+                    <li><strong>alt</strong> → describes the image if it doesn't load.</li>
+                    <li><strong>No closing tag</strong> — it's self-contained!</li>
+                </ul>
+                
+                <p>Example:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h1&gt;</span><span class="text">My Pet</span><span class="tag">&lt;/h1&gt;</span><br>
+                        <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/cat.jpg"</span> <span class="attribute">alt</span>=<span class="value">"A cute cat"</span><span class="tag">&gt;</span><br>
+                        <span class="tag">&lt;p&gt;</span><span class="text">This is my cat, Luna. She loves sleeping all day!</span><span class="tag">&lt;/p&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="example-image">
+                    <h1>My Pet</h1>
+                    <img src="https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=Cute+Cat" alt="A cute cat">
+                    <p>This is my cat, Luna. She loves sleeping all day!</p>
+                </div>
+                
+                <p>💡 Tip for Kids:</p>
+                <ul>
+                    <li>Use a picture of themselves, their pet, or something they love.</li>
+                    <li>If they don't have one, let them search free images on Unsplash or Pexels (safe for classroom use).</li>
+                </ul>
+            </div>
+            
+            <div class="visual-example">
+                <h3>🌍 Part 2: Adding Links (20 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Links help us move around the web — from one page to another."</p>
+                
+                <p>Syntax:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.google.com"</span><span class="tag">&gt;</span><span class="text">Visit Google</span><span class="tag">&lt;/a&gt;</span>
+                    </code>
+                </div>
+                
+                <p>Show:</p>
+                <ul>
+                    <li>The text between &lt;a&gt; and &lt;/a&gt; is clickable.</li>
+                    <li>The href attribute is the address to go to.</li>
+                </ul>
+                
+                <p>Example:</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;h2&gt;</span><span class="text">My Favorite Websites</span><span class="tag">&lt;/h2&gt;</span><br>
+                        <span class="tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.youtube.com"</span><span class="tag">&gt;</span><span class="text">YouTube</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.wikipedia.org"</span><span class="tag">&gt;</span><span class="text">Wikipedia</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://scratch.mit.edu"</span><span class="tag">&gt;</span><span class="text">Scratch</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        <span class="tag">&lt;/ul&gt;</span>
+                    </code>
+                </div>
+                
+                <div class="example-links">
+                    <h2>My Favorite Websites</h2>
+                    <ul>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Wikipedia</a></li>
+                        <li><a href="#">Scratch</a></li>
+                    </ul>
+                </div>
+                
+                <p>Internal Links (for later projects):</p>
+                <p>"We can also link to another HTML page in our own project!"</p>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"about.html"</span><span class="tag">&gt;</span><span class="text">About Me</span><span class="tag">&lt;/a&gt;</span>
+                    </code>
+                </div>
+                
+                <p>💡 Tip: Explain "external" vs "internal" links with a simple analogy:</p>
+                <p>"External is going outside your house; internal is moving to another room."</p>
+            </div>
+            
+            <div class="visual-example">
+                <h3>🗂️ Part 3: Organizing Folders (15 minutes)</h3>
+                <p>Explain:</p>
+                <p>"Good web developers keep their projects organized. Let's create folders to store HTML files and images neatly."</p>
+                
+                <p>Show folder example:</p>
+                <div class="file-structure">
+                    <div class="folder">my_website/</div>
+                    <div style="margin-left: 20px;">
+                        <div class="file">index.html</div>
+                        <div class="file">about.html</div>
+                        <div class="folder">images/</div>
+                        <div style="margin-left: 40px;">
+                            <div class="file">me.jpg</div>
+                            <div class="file">cat.jpg</div>
+                            <div class="file">logo.png</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Demonstrate:</p>
+                <ul>
+                    <li>Create a new folder called <strong>images</strong>.</li>
+                    <li>Move all image files inside it.</li>
+                    <li>Update code to use relative paths like:</li>
+                </ul>
+                
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/me.jpg"</span> <span class="attribute">alt</span>=<span class="value">"My Photo"</span><span class="tag">&gt;</span>
+                    </code>
+                </div>
+                
+                <p>Explain relative paths in kid-friendly terms:</p>
+                <p>"If your HTML file is the house, your images are in the next room. You have to tell the browser where to find them!"</p>
+            </div>
+        </section>
+        
+        <section id="project">
+            <h2>🏗️ Mini Project (10–15 minutes) — "My Profile Page"</h2>
+            <p>Goal: Create a simple profile webpage that includes:</p>
+            <ul>
+                <li>One profile photo</li>
+                <li>A short bio paragraph</li>
+                <li>A list of favorite websites (with clickable links)</li>
+            </ul>
+            
+            <div class="project-example">
+                <h3>Example:</h3>
+                <div class="code-example">
+                    <code>
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="tag">&lt;html&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span><span class="text">My Profile Page</span><span class="tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span><span class="text">My Profile</span><span class="tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/me.jpg"</span> <span class="attribute">alt</span>=<span class="value">"My picture"</span> <span class="attribute">width</span>=<span class="value">"200"</span><span class="tag">&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">About Me</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span><span class="text">Hi, I'm </span><span class="tag">&lt;strong&gt;</span><span class="text">Kareem</span><span class="tag">&lt;/strong&gt;</span><span class="text">. I'm 12 years old and I love coding, football, and pizza!</span><span class="tag">&lt;/p&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span><span class="text">My Favorite Websites</span><span class="tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.youtube.com"</span><span class="tag">&gt;</span><span class="text">YouTube</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.wikipedia.org"</span><span class="tag">&gt;</span><span class="text">Wikipedia</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://scratch.mit.edu"</span><span class="tag">&gt;</span><span class="text">Scratch</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="tag">&lt;/body&gt;</span><br>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </code>
+                </div>
+                
+                <p>Optional:</p>
+                <ul>
+                    <li>Add more images below using &lt;img&gt;.</li>
+                    <li>Add a &lt;hr&gt; (horizontal line) to separate sections.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="show-tell">
+            <h2>🎉 Show & Tell (5 minutes)</h2>
+            <p>Have 2-3 students show their pages on screen.</p>
+            <p>Ask:</p>
+            <ul>
+                <li>"What image did you use?"</li>
+                <li>"Which websites did you link to?"</li>
+                <li>"Can you explain what src and href mean?"</li>
+            </ul>
+            <p>Encourage classmates to clap or give a "thumbs-up emoji" 👍 for each project.</p>
+        </section>
+        
+        <section id="homework">
+            <h2>🏡 Homework</h2>
+            <ul>
+                <li>Add two more links — one internal (to another HTML file they have) and one external (to a website they like).</li>
+                <li>Add at least two more images (like a hobby picture or a favorite place).</li>
+                <li>Make sure all images are inside an images folder.</li>
+            </ul>
+        </section>
+        
+        <section id="bonus">
+            <h2>🎯 Bonus Challenge (for fast learners)</h2>
+            <p>Encourage them to experiment with:</p>
+            
+            <p>Adding width and height to images:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/pet.jpg"</span> <span class="attribute">alt</span>=<span class="value">"My dog"</span> <span class="attribute">width</span>=<span class="value">"150"</span><span class="tag">&gt;</span>
+                </code>
+            </div>
+            
+            <p>Making an image clickable:</p>
+            <div class="code-example">
+                <code>
+                    <span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="value">"https://www.youtube.com"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="value">"images/youtube.png"</span> <span class="attribute">alt</span>=<span class="value">"YouTube logo"</span> <span class="attribute">width</span>=<span class="value">"80"</span><span class="tag">&gt;</span><br>
+                    <span class="tag">&lt;/a&gt;</span>
+                </code>
+            </div>
+            
+            <p>Linking their "All About Me" page (from Week 2) to their "Profile Page".</p>
+        </section>
+        
+        <section id="assessment">
+            <h2>✅ Assessment & Success Criteria</h2>
+            <div class="assessment-grid">
+                <div class="skill-card">
+                    <h3>Used &lt;img&gt; correctly</h3>
+                    <p>Displays image on page</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Added alt text</h3>
+                    <p>Alt attribute present</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Created clickable links</h3>
+                    <p>&lt;a&gt; tag works</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Organized project files</h3>
+                    <p>Has images/ folder</p>
+                    <div class="success">✅</div>
+                </div>
+                <div class="skill-card">
+                    <h3>Creativity</h3>
+                    <p>Personal images or themes</p>
+                    <div class="success">🌟 Bonus</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="common-mistakes">
+            <h2>⚠️ Common Mistakes</h2>
+            <table class="mistakes-table">
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>What Happens</th>
+                        <th>Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wrong image path</td>
+                        <td>Image doesn't show</td>
+                        <td>Check folder name & file extension</td>
+                    </tr>
+                    <tr>
+                        <td>Forgot quotes around href or src</td>
+                        <td>Code error</td>
+                        <td>Always use " " around links</td>
+                    </tr>
+                    <tr>
+                        <td>No alt text</td>
+                        <td>Bad accessibility</td>
+                        <td>Always add a description</td>
+                    </tr>
+                    <tr>
+                        <td>Missing http:// or https:// in links</td>
+                        <td>Link won't open</td>
+                        <td>Include full URL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="teacher-tips">
+            <h2>🧰 Teacher Tips</h2>
+            <ul>
+                <li>Prepare a folder of safe images for students who don't have their own.</li>
+                <li>Emphasize file names — avoid spaces (use underscores or dashes).</li>
+                <li>Show them how to drag-and-drop files into a folder in Replit or VS Code.</li>
+                <li>Reinforce the concept of "HTML is for structure; CSS is for style" (coming soon in Week 5).</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>HTML & CSS Course - Session 3: Images, Links & File Structure</p>
+            <p>Make your web pages come alive with images and links!</p>
+        </footer>
+    </div>
 </body>
 </html>
