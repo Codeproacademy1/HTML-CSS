@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Input Types Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .category-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 2px solid #e9ecef;
+            color: #495057;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .type-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .description {
+            color: #6c757d;
+        }
+        
+        .example-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .example-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .example-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.25);
+        }
+        
+        .demo-section {
+            margin-top: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .demo-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .demo-form input, .demo-form button {
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .demo-form input {
+            border: 1px solid #ced4da;
+        }
+        
+        .demo-form button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .demo-form button:hover {
+            background-color: #5a6fd8;
+        }
+        
+        .code-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .code-example pre {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-button:hover {
+            background-color: #5a6fd8;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .example-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML Input Types Cheat Sheet</h1>
+            <p class="subtitle">A comprehensive reference for HTML form input types with examples and demonstrations</p>
+        </header>
+        
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="scrollToCategory('basic')">Basic Inputs</button>
+            <button class="nav-button" onclick="scrollToCategory('date')">Date & Time</button>
+            <button class="nav-button" onclick="scrollToCategory('choice')">Choice Inputs</button>
+            <button class="nav-button" onclick="scrollToCategory('file')">File Inputs</button>
+            <button class="nav-button" onclick="scrollToCategory('control')">Form Controls</button>
+            <button class="nav-button" onclick="scrollToCategory('special')">Specialized</button>
+            <button class="nav-button" onclick="scrollToCategory('demo')">Live Demo</button>
+        </div>
+        
+        <!-- Basic Input Types -->
+        <section id="basic" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #667eea;">🧱</div>
+                <h2 class="category-title">Basic Input Types</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">text</td>
+                        <td class="description">Single-line text input (default if no type specified).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">password</td>
+                        <td class="description">Text field that hides input characters.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">email</td>
+                        <td class="description">Field for entering email addresses (with validation).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">number</td>
+                        <td class="description">Field for numeric input (can set min, max, step).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">tel</td>
+                        <td class="description">Field for telephone numbers (no validation, but mobile keyboards show dial pad).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">url</td>
+                        <td class="description">Field for entering a web address (validated format).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">search</td>
+                        <td class="description">Text field styled for search boxes (may include "clear" button).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">Basic Input Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label for="text-example">Text Input</label>
+                        <input type="text" id="text-example" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password-example">Password Input</label>
+                        <input type="password" id="password-example" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-example">Email Input</label>
+                        <input type="email" id="email-example" placeholder="example@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="number-example">Number Input</label>
+                        <input type="number" id="number-example" min="0" max="100" step="5" placeholder="Enter a number">
+                    </div>
+                    <div class="form-group">
+                        <label for="tel-example">Telephone Input</label>
+                        <input type="tel" id="tel-example" placeholder="(123) 456-7890">
+                    </div>
+                    <div class="form-group">
+                        <label for="url-example">URL Input</label>
+                        <input type="url" id="url-example" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="search-example">Search Input</label>
+                        <input type="search" id="search-example" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Date and Time Inputs -->
+        <section id="date" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #f093fb;">📅</div>
+                <h2 class="category-title">Date and Time Inputs</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">date</td>
+                        <td class="description">Select a date (year, month, day).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">month</td>
+                        <td class="description">Select a month and year (no day).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">week</td>
+                        <td class="description">Select a week and year.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">time</td>
+                        <td class="description">Select a time (hour and minute).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">datetime-local</td>
+                        <td class="description">Select date and time (local, no timezone).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">Date and Time Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label for="date-example">Date Input</label>
+                        <input type="date" id="date-example">
+                    </div>
+                    <div class="form-group">
+                        <label for="month-example">Month Input</label>
+                        <input type="month" id="month-example">
+                    </div>
+                    <div class="form-group">
+                        <label for="week-example">Week Input</label>
+                        <input type="week" id="week-example">
+                    </div>
+                    <div class="form-group">
+                        <label for="time-example">Time Input</label>
+                        <input type="time" id="time-example">
+                    </div>
+                    <div class="form-group">
+                        <label for="datetime-local-example">Datetime Local Input</label>
+                        <input type="datetime-local" id="datetime-local-example">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Choice Inputs -->
+        <section id="choice" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #4facfe;">✅</div>
+                <h2 class="category-title">Choice Inputs</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">checkbox</td>
+                        <td class="description">Allows selecting one or more options.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">radio</td>
+                        <td class="description">Allows selecting only one option from a group (same name).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">range</td>
+                        <td class="description">Slider for numeric range (min, max, step).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">Choice Input Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label>Checkbox Inputs</label>
+                        <div>
+                            <input type="checkbox" id="checkbox1" name="interests" value="sports">
+                            <label for="checkbox1" style="display: inline; font-weight: normal;">Sports</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox2" name="interests" value="music">
+                            <label for="checkbox2" style="display: inline; font-weight: normal;">Music</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox3" name="interests" value="reading">
+                            <label for="checkbox3" style="display: inline; font-weight: normal;">Reading</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Radio Inputs</label>
+                        <div>
+                            <input type="radio" id="radio1" name="gender" value="male">
+                            <label for="radio1" style="display: inline; font-weight: normal;">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="radio2" name="gender" value="female">
+                            <label for="radio2" style="display: inline; font-weight: normal;">Female</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="radio3" name="gender" value="other">
+                            <label for="radio3" style="display: inline; font-weight: normal;">Other</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="range-example">Range Input</label>
+                        <input type="range" id="range-example" min="0" max="100" step="10">
+                        <span id="range-value">50</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- File and Image Inputs -->
+        <section id="file" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #43e97b;">📁</div>
+                <h2 class="category-title">File and Image Inputs</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">file</td>
+                        <td class="description">Upload file(s) from device.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">image</td>
+                        <td class="description">Acts like a submit button but displays an image (requires src attribute).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">File and Image Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label for="file-example">File Input</label>
+                        <input type="file" id="file-example">
+                    </div>
+                    <div class="form-group">
+                        <label for="image-example">Image Input (acts as submit button)</label>
+                        <input type="image" id="image-example" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iNDAiIGZpbGw9IiM2NjdlZWEiIHJ4PSI0Ii8+PHRleHQgeD0iNTAiIHk9IjI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkltYWdlIEJ1dHRvbjwvdGV4dD48L3N2Zz4=" alt="Submit">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Form Control Inputs -->
+        <section id="control" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #fa709a;">💾</div>
+                <h2 class="category-title">Form Control Inputs</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">submit</td>
+                        <td class="description">Submits the form.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">reset</td>
+                        <td class="description">Resets all form fields to initial values.</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">button</td>
+                        <td class="description">Custom button (no default action; use with JS).</td>
+                    </tr>
+                    <tr>
+                        <td class="type-name">hidden</td>
+                        <td class="description">Hidden field (not visible to user; used to store data).</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">Form Control Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label for="submit-example">Submit Button</label>
+                        <input type="submit" id="submit-example" value="Submit Form">
+                    </div>
+                    <div class="form-group">
+                        <label for="reset-example">Reset Button</label>
+                        <input type="reset" id="reset-example" value="Reset Form">
+                    </div>
+                    <div class="form-group">
+                        <label for="button-example">Custom Button</label>
+                        <input type="button" id="button-example" value="Click Me">
+                    </div>
+                    <div class="form-group">
+                        <label>Hidden Field (not visible)</label>
+                        <input type="hidden" id="hidden-example" value="secret-data">
+                        <span style="font-style: italic;">This field is hidden from view</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Specialized Inputs -->
+        <section id="special" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #ff9a9e;">🔒</div>
+                <h2 class="category-title">Specialized Inputs</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">color</td>
+                        <td class="description">Color picker control.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-section">
+                <h3 class="example-title">Specialized Input Examples</h3>
+                <div class="example-form">
+                    <div class="form-group">
+                        <label for="color-example">Color Picker</label>
+                        <input type="color" id="color-example" value="#667eea">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Obsolete / Not Recommended -->
+        <section class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #a8a8a8;">⚙️</div>
+                <h2 class="category-title">Obsolete / Not Recommended</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="type-name">datetime</td>
+                        <td class="description">Old version of datetime-local (no longer supported).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Live Demo Section -->
+        <section id="demo" class="demo-section">
+            <h2 class="demo-title">Live Form Demo</h2>
+            <form class="demo-form" id="demo-form">
+                <input type="text" placeholder="Your name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="date">
+                <input type="color">
+                <div>
+                    <input type="checkbox" id="subscribe">
+                    <label for="subscribe" style="display: inline; font-weight: normal;">Subscribe to newsletter</label>
+                </div>
+                <input type="file">
+                <input type="submit" value="Register">
+            </form>
+            
+            <div class="code-example">
+                <h3 style="color: #e2e8f0; margin-bottom: 10px;">Example Code</h3>
+                <pre>&lt;form&gt;
+  &lt;input type="text" placeholder="Your name"&gt;&lt;br&gt;
+  &lt;input type="email" placeholder="Email"&gt;&lt;br&gt;
+  &lt;input type="password" placeholder="Password"&gt;&lt;br&gt;
+  &lt;input type="date"&gt;&lt;br&gt;
+  &lt;input type="color"&gt;&lt;br&gt;
+  &lt;input type="checkbox"&gt; Subscribe&lt;br&gt;
+  &lt;input type="file"&gt;&lt;br&gt;
+  &lt;input type="submit" value="Register"&gt;
+&lt;/form&gt;</pre>
+            </div>
+        </section>
+        
+        <footer>
+            <p>HTML Input Types Cheat Sheet &copy; 2023 - For Educational Use</p>
+        </footer>
+    </div>
+    
+    <script>
+        function scrollToCategory(categoryId) {
+            document.getElementById(categoryId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Update range value display
+        const rangeInput = document.getElementById('range-example');
+        const rangeValue = document.getElementById('range-value');
+        
+        rangeInput.addEventListener('input', function() {
+            rangeValue.textContent = this.value;
+        });
+        
+        // Handle form submission for demo
+        document.getElementById('demo-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! (This is just a demo)');
+        });
+    </script>
+</body>
+</html>
