@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Properties Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .category-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 2px solid #e9ecef;
+            color: #495057;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .property-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .example-value {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #e83e8c;
+        }
+        
+        .description {
+            color: #6c757d;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-button:hover {
+            background-color: #2575fc;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Properties Cheat Sheet</h1>
+            <p class="subtitle">A comprehensive reference for web development students</p>
+        </header>
+        
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="scrollToCategory('text')">Text & Font</button>
+            <button class="nav-button" onclick="scrollToCategory('box')">Box Model</button>
+            <button class="nav-button" onclick="scrollToCategory('positioning')">Positioning</button>
+            <button class="nav-button" onclick="scrollToCategory('background')">Background</button>
+            <button class="nav-button" onclick="scrollToCategory('flexbox')">Flexbox</button>
+            <button class="nav-button" onclick="scrollToCategory('grid')">Grid</button>
+            <button class="nav-button" onclick="scrollToCategory('media')">Images & Media</button>
+            <button class="nav-button" onclick="scrollToCategory('animation')">Animation</button>
+            <button class="nav-button" onclick="scrollToCategory('interaction')">Interaction</button>
+            <button class="nav-button" onclick="scrollToCategory('other')">Other</button>
+        </div>
+        
+        <!-- Text and Font Properties -->
+        <section id="text" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #e74c3c;">🎨</div>
+                <h2 class="category-title">Text and Font Properties</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">color</td>
+                        <td><code class="example-value">color: red;</code></td>
+                        <td class="description">Text color</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">font-family</td>
+                        <td><code class="example-value">font-family: Arial, sans-serif;</code></td>
+                        <td class="description">Font type</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">font-size</td>
+                        <td><code class="example-value">font-size: 16px;</code></td>
+                        <td class="description">Font size</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">font-style</td>
+                        <td><code class="example-value">font-style: italic;</code></td>
+                        <td class="description">Normal / italic / oblique</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">font-weight</td>
+                        <td><code class="example-value">font-weight: bold;</code></td>
+                        <td class="description">Thickness of text</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">text-align</td>
+                        <td><code class="example-value">text-align: center;</code></td>
+                        <td class="description">Align text (left, center, right, justify)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">text-decoration</td>
+                        <td><code class="example-value">text-decoration: underline;</code></td>
+                        <td class="description">Underline, line-through, none</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">text-transform</td>
+                        <td><code class="example-value">text-transform: uppercase;</code></td>
+                        <td class="description">Uppercase, lowercase, capitalize</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">letter-spacing</td>
+                        <td><code class="example-value">letter-spacing: 2px;</code></td>
+                        <td class="description">Space between letters</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">word-spacing</td>
+                        <td><code class="example-value">word-spacing: 4px;</code></td>
+                        <td class="description">Space between words</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">line-height</td>
+                        <td><code class="example-value">line-height: 1.5;</code></td>
+                        <td class="description">Vertical spacing between lines</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Box Model -->
+        <section id="box" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #3498db;">📦</div>
+                <h2 class="category-title">Box Model (Layout and Spacing)</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">width</td>
+                        <td><code class="example-value">width: 200px;</code></td>
+                        <td class="description">Element width</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">height</td>
+                        <td><code class="example-value">height: 100px;</code></td>
+                        <td class="description">Element height</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">max-width</td>
+                        <td><code class="example-value">max-width: 100%;</code></td>
+                        <td class="description">Maximum width</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">min-width</td>
+                        <td><code class="example-value">min-width: 50px;</code></td>
+                        <td class="description">Minimum width</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">margin</td>
+                        <td><code class="example-value">margin: 10px;</code></td>
+                        <td class="description">Outer spacing</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">padding</td>
+                        <td><code class="example-value">padding: 20px;</code></td>
+                        <td class="description">Inner spacing</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">border</td>
+                        <td><code class="example-value">border: 1px solid black;</code></td>
+                        <td class="description">Border around element</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">border-radius</td>
+                        <td><code class="example-value">border-radius: 10px;</code></td>
+                        <td class="description">Rounded corners</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">box-shadow</td>
+                        <td><code class="example-value">box-shadow: 0 2px 5px gray;</code></td>
+                        <td class="description">Adds shadow effect</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">overflow</td>
+                        <td><code class="example-value">overflow: auto;</code></td>
+                        <td class="description">Handles overflowing content (visible, hidden, scroll, auto)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Positioning and Display -->
+        <section id="positioning" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #2ecc71;">🧭</div>
+                <h2 class="category-title">Positioning and Display</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">display</td>
+                        <td><code class="example-value">display: flex;</code></td>
+                        <td class="description">Defines display type (block, inline, flex, grid, none)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">position</td>
+                        <td><code class="example-value">position: absolute;</code></td>
+                        <td class="description">Position type (static, relative, absolute, fixed, sticky)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">top</td>
+                        <td><code class="example-value">top: 10px;</code></td>
+                        <td class="description">Distance from top edge</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">bottom</td>
+                        <td><code class="example-value">bottom: 20px;</code></td>
+                        <td class="description">Distance from bottom edge</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">left</td>
+                        <td><code class="example-value">left: 5px;</code></td>
+                        <td class="description">Distance from left edge</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">right</td>
+                        <td><code class="example-value">right: 5px;</code></td>
+                        <td class="description">Distance from right edge</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">z-index</td>
+                        <td><code class="example-value">z-index: 10;</code></td>
+                        <td class="description">Layer order (higher value = front)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">float</td>
+                        <td><code class="example-value">float: left;</code></td>
+                        <td class="description">Float element left or right</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">clear</td>
+                        <td><code class="example-value">clear: both;</code></td>
+                        <td class="description">Control floating behavior</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Background and Color -->
+        <section id="background" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #f39c12;">🧰</div>
+                <h2 class="category-title">Background and Color</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">background-color</td>
+                        <td><code class="example-value">background-color: #f4f4f4;</code></td>
+                        <td class="description">Background color</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">background-image</td>
+                        <td><code class="example-value">background-image: url('img.jpg');</code></td>
+                        <td class="description">Background image</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">background-size</td>
+                        <td><code class="example-value">background-size: cover;</code></td>
+                        <td class="description">Fit image (auto, cover, contain)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">background-repeat</td>
+                        <td><code class="example-value">background-repeat: no-repeat;</code></td>
+                        <td class="description">Repeat image or not</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">background-position</td>
+                        <td><code class="example-value">background-position: center;</code></td>
+                        <td class="description">Image position</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">background-attachment</td>
+                        <td><code class="example-value">background-attachment: fixed;</code></td>
+                        <td class="description">Scroll or fixed background</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Flexbox Properties -->
+        <section id="flexbox" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #9b59b6;">🧩</div>
+                <h2 class="category-title">Flexbox Properties</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">display</td>
+                        <td><code class="example-value">display: flex;</code></td>
+                        <td class="description">Enable flexbox</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">flex-direction</td>
+                        <td><code class="example-value">flex-direction: row;</code></td>
+                        <td class="description">Arrange items (row, column)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">justify-content</td>
+                        <td><code class="example-value">justify-content: space-between;</code></td>
+                        <td class="description">Align items horizontally</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">align-items</td>
+                        <td><code class="example-value">align-items: center;</code></td>
+                        <td class="description">Align items vertically</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">flex-wrap</td>
+                        <td><code class="example-value">flex-wrap: wrap;</code></td>
+                        <td class="description">Wrap items if needed</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">align-content</td>
+                        <td><code class="example-value">align-content: space-around;</code></td>
+                        <td class="description">Align multi-line flex items</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">flex</td>
+                        <td><code class="example-value">flex: 1;</code></td>
+                        <td class="description">Grow or shrink item size</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Grid Layout -->
+        <section id="grid" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #1abc9c;">🧮</div>
+                <h2 class="category-title">Grid Layout</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">display</td>
+                        <td><code class="example-value">display: grid;</code></td>
+                        <td class="description">Enable grid layout</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">grid-template-columns</td>
+                        <td><code class="example-value">grid-template-columns: 1fr 2fr;</code></td>
+                        <td class="description">Define column structure</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">grid-template-rows</td>
+                        <td><code class="example-value">grid-template-rows: auto 100px;</code></td>
+                        <td class="description">Define row structure</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">gap</td>
+                        <td><code class="example-value">gap: 10px;</code></td>
+                        <td class="description">Space between grid cells</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">grid-column</td>
+                        <td><code class="example-value">grid-column: 1 / 3;</code></td>
+                        <td class="description">Span columns</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">grid-row</td>
+                        <td><code class="example-value">grid-row: 2 / 4;</code></td>
+                        <td class="description">Span rows</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">place-items</td>
+                        <td><code class="example-value">place-items: center;</code></td>
+                        <td class="description">Center content easily</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Images and Media -->
+        <section id="media" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #d35400;">🖼️</div>
+                <h2 class="category-title">Images and Media</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">object-fit</td>
+                        <td><code class="example-value">object-fit: cover;</code></td>
+                        <td class="description">Defines how image fits in container</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">object-position</td>
+                        <td><code class="example-value">object-position: center;</code></td>
+                        <td class="description">Align image within container</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">filter</td>
+                        <td><code class="example-value">filter: brightness(90%);</code></td>
+                        <td class="description">Apply visual effects (blur, brightness, etc.)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Animation and Transition -->
+        <section id="animation" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #c0392b;">🕹️</div>
+                <h2 class="category-title">Animation and Transition</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">transition</td>
+                        <td><code class="example-value">transition: all 0.3s ease;</code></td>
+                        <td class="description">Smooth property changes</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">transition-duration</td>
+                        <td><code class="example-value">transition-duration: 0.5s;</code></td>
+                        <td class="description">Duration of transition</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation-name</td>
+                        <td><code class="example-value">animation-name: move;</code></td>
+                        <td class="description">Animation keyframe name</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation-duration</td>
+                        <td><code class="example-value">animation-duration: 2s;</code></td>
+                        <td class="description">Length of animation</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation-iteration-count</td>
+                        <td><code class="example-value">animation-iteration-count: infinite;</code></td>
+                        <td class="description">Repeat animation count</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation-direction</td>
+                        <td><code class="example-value">animation-direction: alternate;</code></td>
+                        <td class="description">Reverse direction on repeat</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation-timing-function</td>
+                        <td><code class="example-value">animation-timing-function: ease-in-out;</code></td>
+                        <td class="description">Speed curve of animation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Cursor and Interaction -->
+        <section id="interaction" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #7f8c8d;">🧑‍💻</div>
+                <h2 class="category-title">Cursor and Interaction</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">cursor</td>
+                        <td><code class="example-value">cursor: pointer;</code></td>
+                        <td class="description">Mouse pointer style</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">opacity</td>
+                        <td><code class="example-value">opacity: 0.8;</code></td>
+                        <td class="description">Transparency level</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">pointer-events</td>
+                        <td><code class="example-value">pointer-events: none;</code></td>
+                        <td class="description">Enable/disable pointer actions</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">user-select</td>
+                        <td><code class="example-value">user-select: none;</code></td>
+                        <td class="description">Allow or block text selection</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Other Useful Properties -->
+        <section id="other" class="category">
+            <div class="category-header">
+                <div class="category-icon" style="background-color: #34495e;">🌐</div>
+                <h2 class="category-title">Other Useful Properties</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Example Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">content</td>
+                        <td><code class="example-value">content: "→";</code></td>
+                        <td class="description">Adds generated content (pseudo-elements)</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">clip-path</td>
+                        <td><code class="example-value">clip-path: circle(50%);</code></td>
+                        <td class="description">Clip shape of an element</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">visibility</td>
+                        <td><code class="example-value">visibility: hidden;</code></td>
+                        <td class="description">Hide without removing layout space</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">transform</td>
+                        <td><code class="example-value">transform: rotate(45deg);</code></td>
+                        <td class="description">Rotate, scale, or translate elements</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">transition</td>
+                        <td><code class="example-value">transition: 0.3s ease;</code></td>
+                        <td class="description">Add smooth effect on hover/change</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <footer>
+            <p>CSS Properties Cheat Sheet &copy; 2023 - For Educational Use</p>
+        </footer>
+    </div>
+    
+    <script>
+        function scrollToCategory(categoryId) {
+            document.getElementById(categoryId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
